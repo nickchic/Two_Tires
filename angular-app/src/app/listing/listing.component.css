@@ -1,0 +1,16 @@
+.bike_pic {
+    width:200px;
+    margin-right:10px
+}
+
+.info{
+    width: 100px;
+    display:inline-block;
+    vertical-align: top;
+}
+
+.bike{
+    padding: 10px;
+    border: 1px solid black;
+    width: 50%;
+}

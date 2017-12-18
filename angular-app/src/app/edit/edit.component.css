@@ -1,0 +1,8 @@
+.error{
+    color:red;
+}
+.form_half {
+    display: inline-block;
+    width:45%;
+    vertical-align: top;
+}
