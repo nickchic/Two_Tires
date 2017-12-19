@@ -13,7 +13,7 @@ export class BikeService {
     constructor(private _http: Http) { }
 
     create_bike(bike: Bike): Observable<Bike>{
-      return this._http.post('http://localhost:8000/bikes', bike)
+      return this._http.post('http://127.0.0.1:8000/bikes', bike)
           .map((response)=>{
               console.log(response);
               return response.json();
@@ -22,7 +22,7 @@ export class BikeService {
     }
 
     getAllBikes(): Observable<Bike[]>{
-      return this._http.get('http://localhost:8000/bikes')
+      return this._http.get('http://127.0.0.1:8000/bikes')
           .map((response)=>{
               console.log(response);
               return response.json();
@@ -31,7 +31,7 @@ export class BikeService {
     }
 
     deleteBike(bike: Bike): Observable<Bike>{
-        return this._http.delete(`http://localhost:8000/bikes/${bike._id}`)
+        return this._http.delete(`http://127.0.0.1:8000/bikes/${bike._id}`)
             .map((response)=>{
                 console.log(response);
                 return response.json();
@@ -40,7 +40,7 @@ export class BikeService {
     }
 
     editBike(bike: Bike): Observable<Bike>{
-        return this._http.put(`http://localhost:8000/bikes/${bike._id}`, bike)
+        return this._http.put(`http://127.0.0.1:8000/bikes/${bike._id}`, bike)
             .map((response)=>{
                 console.log(response);
             })
