@@ -22,7 +22,7 @@ export class UserService {
 
     register(user: User): Observable<User>{
         console.log('in reg func');
-        return this._http.post('http://127.0.0.1:8000/users', user)
+        return this._http.post('http://localhost:8000/users', user)
             .map((response) => {
                 console.log('Reg Response', response);
                 return response.json();
@@ -37,14 +37,14 @@ export class UserService {
     }
 
     getAllUsers(){
-        this._http.get('http://127.0.0.1:8000/users').toPromise()
+        this._http.get('http://localhost:8000/users').toPromise()
             .then((users) => this.userObserver.next(users.json()))
             .catch((error) => console.log(error))
     }
 
     login_attempt(user: User): Observable<User>{
         console.log('sending login request');
-        return this._http.post('http://127.0.0.1:8000/login', user)
+        return this._http.post('http://localhost:8000/login', user)
             .map((response) => {
                 console.log('logged in!')
                 return response.json();
@@ -59,7 +59,7 @@ export class UserService {
         console.log('getUserStored');
         if(localStorage.id){
             console.log('id found', localStorage.id);
-            return this._http.post('http://127.0.0.1:8000/user', { _id: localStorage.id })
+            return this._http.post('http://localhost:8000/user', { _id: localStorage.id })
                 .map((response) => {
                     console.log('set user', this.logged_in_user);
                     this.logged_in_user = response.json();
