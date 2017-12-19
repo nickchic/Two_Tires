@@ -302,7 +302,7 @@ var BikeService = (function () {
         this.bikesObserver = new __WEBPACK_IMPORTED_MODULE_2_Rxjs__["BehaviorSubject"]([]);
     }
     BikeService.prototype.create_bike = function (bike) {
-        return this._http.post('http://13.59.78.49:8000/bikes', bike)
+        return this._http.post('http://127.0.0.1:8000/bikes', bike)
             .map(function (response) {
             console.log(response);
             return response.json();
@@ -310,7 +310,7 @@ var BikeService = (function () {
             .catch(function (error) { return __WEBPACK_IMPORTED_MODULE_2_Rxjs__["Observable"].throw(error); });
     };
     BikeService.prototype.getAllBikes = function () {
-        return this._http.get('http://13.59.78.49:8000/bikes')
+        return this._http.get('http://127.0.0.1:8000/bikes')
             .map(function (response) {
             console.log(response);
             return response.json();
@@ -318,7 +318,7 @@ var BikeService = (function () {
             .catch(function (error) { return __WEBPACK_IMPORTED_MODULE_2_Rxjs__["Observable"].throw(error); });
     };
     BikeService.prototype.deleteBike = function (bike) {
-        return this._http.delete("http://13.59.78.49:8000/bikes/" + bike._id)
+        return this._http.delete("http://127.0.0.1:8000/bikes/" + bike._id)
             .map(function (response) {
             console.log(response);
             return response.json();
@@ -326,7 +326,7 @@ var BikeService = (function () {
             .catch(function (error) { return __WEBPACK_IMPORTED_MODULE_2_Rxjs__["Observable"].throw(error); });
     };
     BikeService.prototype.editBike = function (bike) {
-        return this._http.put("http://13.59.78.49:8000/bikes/" + bike._id, bike)
+        return this._http.put("http://127.0.0.1:8000/bikes/" + bike._id, bike)
             .map(function (response) {
             console.log(response);
         })
@@ -913,7 +913,7 @@ var UserService = (function () {
     UserService.prototype.register = function (user) {
         var _this = this;
         console.log('in reg func');
-        return this._http.post('http://13.59.78.49:8000/users', user)
+        return this._http.post('http://127.0.0.1:8000/users', user)
             .map(function (response) {
             console.log('Reg Response', response);
             return response.json();
@@ -928,13 +928,13 @@ var UserService = (function () {
     };
     UserService.prototype.getAllUsers = function () {
         var _this = this;
-        this._http.get('http://13.59.78.49:8000/users').toPromise()
+        this._http.get('http://127.0.0.1:8000/users').toPromise()
             .then(function (users) { return _this.userObserver.next(users.json()); })
             .catch(function (error) { return console.log(error); });
     };
     UserService.prototype.login_attempt = function (user) {
         console.log('sending login request');
-        return this._http.post('http://13.59.78.49:8000/login', user)
+        return this._http.post('http://127.0.0.1:8000/login', user)
             .map(function (response) {
             console.log('logged in!');
             return response.json();
@@ -949,7 +949,7 @@ var UserService = (function () {
         console.log('getUserStored');
         if (localStorage.id) {
             console.log('id found', localStorage.id);
-            return this._http.post('http://13.59.78.49:8000/user', { _id: localStorage.id })
+            return this._http.post('http://127.0.0.1:8000/user', { _id: localStorage.id })
                 .map(function (response) {
                 console.log('set user', _this.logged_in_user);
                 _this.logged_in_user = response.json();
