@@ -14,6 +14,7 @@ module.exports = function(app) {
     app.post('/users', userController.create);
 
     app.post('/login', userController.login);
+    app.delete('/logout', userController.logout);
 
     app.get('/bikes', bikeController.show);
     app.post('/bikes', bikeController.create);

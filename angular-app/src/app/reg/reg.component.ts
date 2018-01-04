@@ -18,21 +18,21 @@ export class RegComponent implements OnInit {
     users: User[] = [];
     emailError: any = {};
 
-
     constructor(private _userService: UserService) { }
 
     ngOnInit() {
-        //this._userService.getAllUsers();
     }
 
     register(event:Event){
         event.preventDefault();
         console.log('register', this.user);
         this.user.password = this.password;
+        console.log(this.user.first_name, this.user.last_name)
         this._userService.register(this.user).subscribe(
             (user: any) => {
                 console.log('in subscribe user')
-                this._userService.login(user);
+                if(this._userService.logged_in()){ this._userService.logout() };
+                this._userService.login_success(user);
             },
             errorResponse => {
                 console.log('in subscribe email')

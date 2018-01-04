@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
+import { CookieModule } from '../../node_modules/ngx-cookie';
+
+import { TitleizePipe } from './titleize.pipe';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -12,9 +15,12 @@ import { SearchComponent } from './search/search.component';
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 import { ListingComponent } from './listing/listing.component';
+import { HomeComponent } from './home/home.component';
+import { NavComponent } from './nav/nav.component';
 
 import { BikeService } from './bike.service';
 import { UserService } from './user.service';
+
 
 
 @NgModule({
@@ -26,13 +32,17 @@ import { UserService } from './user.service';
     SearchComponent,
     CreateComponent,
     EditComponent,
-    ListingComponent
+    ListingComponent,
+    TitleizePipe,
+    HomeComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CookieModule.forRoot()
   ],
   providers: [BikeService, UserService],
   bootstrap: [AppComponent]

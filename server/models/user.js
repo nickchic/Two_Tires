@@ -2,9 +2,9 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var UserSchema = new mongoose.Schema({
-    first_name: { type: String, required: true, minlength: 3},
-    last_name: { type: String, required: true, minlength: 3},
-    email: { type: String, required: true, minlength: 3, unique: true,
+    first_name: { type: String, required: true, minlength: 3, trim: true},
+    last_name: { type: String, required: true, minlength: 3, trim: true},
+    email: { type: String, required: true, minlength: 3, trim: true, unique: true,
         validate: {
             validator: function( value ) {
               console.log("checking email");
@@ -13,7 +13,7 @@ var UserSchema = new mongoose.Schema({
           message: "Email needs to be in the correct format"
         }
     },
-    password_hash: { type: String, required: true, minlength: 3,
+    password_hash: { type: String, required: true, minlength: 3, trim: true,
         validate: {
             validator: function( value ) {
             return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,32}/.test( value );
@@ -23,6 +23,8 @@ var UserSchema = new mongoose.Schema({
     },
     bikes:[{ type: Schema.Types.ObjectId, ref: 'Bike' }]
 },{ timestamps: true })
+
+
 
 mongoose.model('User', UserSchema);
 var User = mongoose.model('User')

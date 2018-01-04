@@ -7,6 +7,8 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import { Router } from '@angular/router';
 
+import { CookieService } from '../../node_modules/ngx-cookie';
+
 @Injectable()
 export class UserService {
 
@@ -15,10 +17,10 @@ export class UserService {
     emailError = new BehaviorSubject({});
     loginObserver = new BehaviorSubject({});
 
-    logged_in_user: User = new User();
-    logged_in: boolean = false;
+    logged_in_user: User;
+    user_filled: boolean;
 
-    constructor(private _http: Http, private _router: Router) { }
+    constructor(private _http: Http, private _router: Router, private _cookieService: CookieService) { }
 
     register(user: User): Observable<User>{
         console.log('in reg func');
@@ -42,7 +44,7 @@ export class UserService {
             .catch((error) => console.log(error))
     }
 
-    login_attempt(user: User): Observable<User>{
+    login(user: User): Observable<User>{
         console.log('sending login request');
         return this._http.post('/login', user)
             .map((response) => {
@@ -57,35 +59,54 @@ export class UserService {
 
     getUserStored(): Observable<User>{
         console.log('getUserStored');
-        if(localStorage.id){
-            console.log('id found', localStorage.id);
-            return this._http.post('/user', { _id: localStorage.id })
-                .map((response) => {
-                    console.log('set user', this.logged_in_user);
-                    this.logged_in_user = response.json();
-                    return response.json();
-                })
-                .catch((error) => {
-                    console.log('stored user error', error);
-                    return Observable.throw(error);
-                })
-        } else {
-            return null;
-        }
+        const userID = this._cookieService.get('userID');
+        console.log('id found', userID);
+        return this._http.post('/user', { _id: userID })
+            .map((response) => {
+                console.log('set user', this.logged_in_user);
+                this.logged_in_user = response.json();
+                this.user_filled = true;
+                return response.json();
+            })
+            .catch((error) => {
+                console.log('stored user error', error);
+                return Observable.throw(error);
+            })
 
     }
 
-    logout(){
-        console.log('in log out func');
-        this.logged_in_user = new User();
-        localStorage.setItem('id', undefined);
+    logout(): Observable<Boolean>{
+        console.log('log out func');
+        return this._http.delete('/logout')
+            .map((response) => {
+                console.log('logout response', response)
+                this.logged_in_user = new User();
+                this.user_filled = false;
+                return response.json()
+            })
+            .catch((error) => {
+                console.log(error);
+                return Observable.throw(error);
+            })
     }
 
-    login(user: User){
+    login_success(user: User){
         console.log('in login func');
         this.logged_in_user = user;
         this._router.navigateByUrl('/listings');
-        localStorage.setItem('id', this.logged_in_user._id);
+    }
+
+    logged_in(): boolean {
+        const expired = parseInt(this._cookieService.get('expiration'),10);
+        const userID = this._cookieService.get('userID');
+        const session = this._cookieService.get('session');
+
+        return Boolean(session && userID && expired && expired > Date.now());
+    }
+
+    showTime(){
+        console.log('target', this._cookieService.get('expiration'))
+        console.log('now', Date.now())
     }
 
 }

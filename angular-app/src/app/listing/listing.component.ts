@@ -11,21 +11,39 @@ import { Bike } from './../bike';
 })
 export class ListingComponent implements OnInit {
 
+    user: User = new User();
     user_bikes: Bike[] = [];
+    logged_in: boolean;
     showForm: boolean[] = [];
 
     constructor(private _userService: UserService, private _bikeService: BikeService) { }
 
     ngOnInit() {
-        this._userService.getUserStored()
-            .subscribe(
-                user => {
-                    this.user_bikes = user.bikes
-                    for(let i = 0; i < this.user_bikes.length; i++){
-                        this.showForm[i] = false;
-                    }
-                }
-            );
+        if(this._userService.logged_in()){
+            if(!this._userService.user_filled){
+                this._userService.getUserStored()
+                    .subscribe(
+                        user => {
+                            this.user = user;
+                            this.fillBike(user);
+                            this.logged_in = true;
+                        },
+                        errorResponse => console.log(errorResponse)
+                    );
+            } else if(this._userService.user_filled){
+                this.user = this._userService.logged_in_user;
+                this.fillBike(this._userService.logged_in_user);
+                this.logged_in = true;
+            }
+        }
+    }
+
+    fillBike(user: User){
+        console.log('fill in bike', user.bikes);
+        this.user_bikes = user.bikes
+        for(let i = 0; i < this.user_bikes.length; i++){
+            this.showForm[i] = false;
+        }
     }
 
     deleteBike(bike_to_delete: Bike){

@@ -1,4 +1,4 @@
-<div id='reg_form'>
+<div id='reg_form' >
     <h2>Register</h2>
     <form (submit)='register($event)' #regForm='ngForm' >
         <p>First Name</p>
@@ -39,4 +39,3 @@
         <input type='submit' [disabled]='!regForm.form.valid || confirm_password != password'/>
     </form>
 </div>
-<app-login></app-login>

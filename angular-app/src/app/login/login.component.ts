@@ -11,28 +11,49 @@ import { UserService } from './../user.service';
 export class LoginComponent implements OnInit {
 
     user: User = new User();
+    logged_in: boolean;
     error: string = null;
 
     constructor(private _userService: UserService) { }
 
     ngOnInit() {
+        if(this._userService.logged_in() && !this._userService.logged_in_user){
+            this._userService.getUserStored()
+                .subscribe(
+                    user => {
+                        this.user = user;
+                    },
+                    errorResponse => this.error = errorResponse.json()
+                );
+        }
     }
 
 
     login_attempt(event: Event){
         event.preventDefault();
         console.log('login attempt')
-        this._userService.login_attempt(this.user)
+        this._userService.login(this.user)
             .subscribe(
-                user => this._userService.login(user),
+                user => {
+                    this._userService.login_success(user);
+                    this.user = new User();
+                },
                 errorResponse => this.error = errorResponse.json()
             );
     }
 
     logout(event: Event){
         event.preventDefault();
-        console.log('log out')
-        this._userService.logout();
+        console.log('log out');
+        this._userService.logout()
+        .subscribe(
+            response => {
+                console.log(response);
+                this.logged_in = false;
+                this.user = new User();
+            },
+            errorResponse => this.error = errorResponse.json()
+        );
     }
 
 }

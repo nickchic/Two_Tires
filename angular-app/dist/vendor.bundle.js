@@ -25524,6 +25524,576 @@ function toComment(sourceMap) {
 
 /***/ }),
 
+/***/ "../../../../ngx-cookie/index.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CookieModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_cookie_options_provider__ = __webpack_require__("../../../../ngx-cookie/src/cookie-options-provider.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_cookie_service__ = __webpack_require__("../../../../ngx-cookie/src/cookie.service.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_cookie_factory__ = __webpack_require__("../../../../ngx-cookie/src/cookie.factory.js");
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_2__src_cookie_service__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__src_cookie_backend_service__ = __webpack_require__("../../../../ngx-cookie/src/cookie-backend.service.js");
+/* unused harmony namespace reexport */
+/* unused harmony namespace reexport */
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__src_utils__ = __webpack_require__("../../../../ngx-cookie/src/utils.js");
+/* unused harmony namespace reexport */
+
+
+
+
+
+
+
+
+
+var CookieModule = (function () {
+    function CookieModule() {
+    }
+    /**
+     * Use this method in your root module to provide the CookieService
+     * @param {CookieOptions} options
+     * @returns {ModuleWithProviders}
+     */
+    /**
+       * Use this method in your root module to provide the CookieService
+       * @param {CookieOptions} options
+       * @returns {ModuleWithProviders}
+       */
+    CookieModule.forRoot = /**
+       * Use this method in your root module to provide the CookieService
+       * @param {CookieOptions} options
+       * @returns {ModuleWithProviders}
+       */
+    function (options) {
+        if (options === void 0) { options = {}; }
+        return {
+            ngModule: CookieModule,
+            providers: [
+                { provide: __WEBPACK_IMPORTED_MODULE_1__src_cookie_options_provider__["a" /* COOKIE_OPTIONS */], useValue: options },
+                { provide: __WEBPACK_IMPORTED_MODULE_2__src_cookie_service__["a" /* CookieService */], useFactory: __WEBPACK_IMPORTED_MODULE_3__src_cookie_factory__["a" /* cookieServiceFactory */], deps: [__WEBPACK_IMPORTED_MODULE_1__src_cookie_options_provider__["b" /* CookieOptionsProvider */]] }
+            ]
+        };
+    };
+    /**
+     * Use this method in your other (non root) modules to import the directive/pipe
+     * @param {CookieOptions} options
+     * @returns {ModuleWithProviders}
+     */
+    /**
+       * Use this method in your other (non root) modules to import the directive/pipe
+       * @param {CookieOptions} options
+       * @returns {ModuleWithProviders}
+       */
+    CookieModule.forChild = /**
+       * Use this method in your other (non root) modules to import the directive/pipe
+       * @param {CookieOptions} options
+       * @returns {ModuleWithProviders}
+       */
+    function (options) {
+        if (options === void 0) { options = {}; }
+        return {
+            ngModule: CookieModule,
+            providers: [
+                { provide: __WEBPACK_IMPORTED_MODULE_1__src_cookie_options_provider__["a" /* COOKIE_OPTIONS */], useValue: options },
+                { provide: __WEBPACK_IMPORTED_MODULE_2__src_cookie_service__["a" /* CookieService */], useFactory: __WEBPACK_IMPORTED_MODULE_3__src_cookie_factory__["a" /* cookieServiceFactory */], deps: [__WEBPACK_IMPORTED_MODULE_1__src_cookie_options_provider__["b" /* CookieOptionsProvider */]] }
+            ]
+        };
+    };
+    CookieModule.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */], args: [{
+                    providers: [__WEBPACK_IMPORTED_MODULE_1__src_cookie_options_provider__["b" /* CookieOptionsProvider */]]
+                },] },
+    ];
+    /** @nocollapse */
+    CookieModule.ctorParameters = function () { return []; };
+    return CookieModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../ngx-cookie/src/cookie-backend.service.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export CookieBackendService */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__cookie_service__ = __webpack_require__("../../../../ngx-cookie/src/cookie.service.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cookie_options_provider__ = __webpack_require__("../../../../ngx-cookie/src/cookie-options-provider.js");
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+var CookieBackendService = (function (_super) {
+    __extends(CookieBackendService, _super);
+    function CookieBackendService(request, response, _optionsProvider) {
+        var _this = _super.call(this, _optionsProvider) || this;
+        _this.request = request;
+        _this.response = response;
+        return _this;
+    }
+    Object.defineProperty(CookieBackendService.prototype, "cookieString", {
+        get: function () {
+            return this.request.headers.cookie || '';
+        },
+        set: function (val) {
+            this.request.headers.cookie = val;
+            this.response.headers.cookie = val;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    CookieBackendService.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */] },
+    ];
+    /** @nocollapse */
+    CookieBackendService.ctorParameters = function () { return [
+        { type: undefined, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* Inject */], args: ['REQUEST',] },] },
+        { type: undefined, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* Inject */], args: ['RESPONSE',] },] },
+        { type: __WEBPACK_IMPORTED_MODULE_2__cookie_options_provider__["b" /* CookieOptionsProvider */], },
+    ]; };
+    return CookieBackendService;
+}(__WEBPACK_IMPORTED_MODULE_1__cookie_service__["a" /* CookieService */]));
+
+
+
+/***/ }),
+
+/***/ "../../../../ngx-cookie/src/cookie-options-provider.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return COOKIE_OPTIONS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return CookieOptionsProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("../../../common/esm5/common.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils__ = __webpack_require__("../../../../ngx-cookie/src/utils.js");
+
+
+
+var COOKIE_OPTIONS = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* InjectionToken */]('COOKIE_OPTIONS');
+/** @private */
+var CookieOptionsProvider = (function () {
+    function CookieOptionsProvider(options, _injector) {
+        if (options === void 0) { options = {}; }
+        this._injector = _injector;
+        this.defaultOptions = {
+            path: this._injector.get(__WEBPACK_IMPORTED_MODULE_1__angular_common__["a" /* APP_BASE_HREF */], '/'),
+            domain: null,
+            expires: null,
+            secure: false,
+            httpOnly: false
+        };
+        this._options = Object(__WEBPACK_IMPORTED_MODULE_2__utils__["c" /* mergeOptions */])(this.defaultOptions, options);
+    }
+    Object.defineProperty(CookieOptionsProvider.prototype, "options", {
+        get: function () {
+            return this._options;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    CookieOptionsProvider.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */] },
+    ];
+    /** @nocollapse */
+    CookieOptionsProvider.ctorParameters = function () { return [
+        { type: undefined, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* Inject */], args: [COOKIE_OPTIONS,] },] },
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injector */], },
+    ]; };
+    return CookieOptionsProvider;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../ngx-cookie/src/cookie.factory.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = cookieServiceFactory;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__cookie_service__ = __webpack_require__("../../../../ngx-cookie/src/cookie.service.js");
+
+function cookieServiceFactory(cookieOptionsProvider) {
+    return new __WEBPACK_IMPORTED_MODULE_0__cookie_service__["a" /* CookieService */](cookieOptionsProvider);
+}
+
+
+/***/ }),
+
+/***/ "../../../../ngx-cookie/src/cookie.service.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CookieService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__cookie_options_provider__ = __webpack_require__("../../../../ngx-cookie/src/cookie-options-provider.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils__ = __webpack_require__("../../../../ngx-cookie/src/utils.js");
+
+
+
+var CookieService = (function () {
+    function CookieService(_optionsProvider) {
+        this._optionsProvider = _optionsProvider;
+        this.options = this._optionsProvider.options;
+    }
+    Object.defineProperty(CookieService.prototype, "cookieString", {
+        get: function () {
+            return document.cookie || '';
+        },
+        set: function (val) {
+            document.cookie = val;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    /**
+     * @name CookieService#get
+     *
+     * @description
+     * Returns the value of given cookie key.
+     *
+     * @param {string} key Id to use for lookup.
+     * @returns {string} Raw cookie value.
+     */
+    /**
+       * @name CookieService#get
+       *
+       * @description
+       * Returns the value of given cookie key.
+       *
+       * @param {string} key Id to use for lookup.
+       * @returns {string} Raw cookie value.
+       */
+    CookieService.prototype.get = /**
+       * @name CookieService#get
+       *
+       * @description
+       * Returns the value of given cookie key.
+       *
+       * @param {string} key Id to use for lookup.
+       * @returns {string} Raw cookie value.
+       */
+    function (key) {
+        return this._cookieReader()[key];
+    };
+    /**
+     * @name CookieService#getObject
+     *
+     * @description
+     * Returns the deserialized value of given cookie key.
+     *
+     * @param {string} key Id to use for lookup.
+     * @returns {Object} Deserialized cookie value.
+     */
+    /**
+       * @name CookieService#getObject
+       *
+       * @description
+       * Returns the deserialized value of given cookie key.
+       *
+       * @param {string} key Id to use for lookup.
+       * @returns {Object} Deserialized cookie value.
+       */
+    CookieService.prototype.getObject = /**
+       * @name CookieService#getObject
+       *
+       * @description
+       * Returns the deserialized value of given cookie key.
+       *
+       * @param {string} key Id to use for lookup.
+       * @returns {Object} Deserialized cookie value.
+       */
+    function (key) {
+        var value = this.get(key);
+        return value ? Object(__WEBPACK_IMPORTED_MODULE_2__utils__["e" /* safeJsonParse */])(value) : value;
+    };
+    /**
+     * @name CookieService#getAll
+     *
+     * @description
+     * Returns a key value object with all the cookies.
+     *
+     * @returns {Object} All cookies
+     */
+    /**
+       * @name CookieService#getAll
+       *
+       * @description
+       * Returns a key value object with all the cookies.
+       *
+       * @returns {Object} All cookies
+       */
+    CookieService.prototype.getAll = /**
+       * @name CookieService#getAll
+       *
+       * @description
+       * Returns a key value object with all the cookies.
+       *
+       * @returns {Object} All cookies
+       */
+    function () {
+        return this._cookieReader();
+    };
+    /**
+     * @name CookieService#put
+     *
+     * @description
+     * Sets a value for given cookie key.
+     *
+     * @param {string} key Id for the `value`.
+     * @param {string} value Raw value to be stored.
+     * @param {CookieOptions} options (Optional) Options object.
+     */
+    /**
+       * @name CookieService#put
+       *
+       * @description
+       * Sets a value for given cookie key.
+       *
+       * @param {string} key Id for the `value`.
+       * @param {string} value Raw value to be stored.
+       * @param {CookieOptions} options (Optional) Options object.
+       */
+    CookieService.prototype.put = /**
+       * @name CookieService#put
+       *
+       * @description
+       * Sets a value for given cookie key.
+       *
+       * @param {string} key Id for the `value`.
+       * @param {string} value Raw value to be stored.
+       * @param {CookieOptions} options (Optional) Options object.
+       */
+    function (key, value, options) {
+        this._cookieWriter()(key, value, options);
+    };
+    /**
+     * @name CookieService#putObject
+     *
+     * @description
+     * Serializes and sets a value for given cookie key.
+     *
+     * @param {string} key Id for the `value`.
+     * @param {Object} value Value to be stored.
+     * @param {CookieOptions} options (Optional) Options object.
+     */
+    /**
+       * @name CookieService#putObject
+       *
+       * @description
+       * Serializes and sets a value for given cookie key.
+       *
+       * @param {string} key Id for the `value`.
+       * @param {Object} value Value to be stored.
+       * @param {CookieOptions} options (Optional) Options object.
+       */
+    CookieService.prototype.putObject = /**
+       * @name CookieService#putObject
+       *
+       * @description
+       * Serializes and sets a value for given cookie key.
+       *
+       * @param {string} key Id for the `value`.
+       * @param {Object} value Value to be stored.
+       * @param {CookieOptions} options (Optional) Options object.
+       */
+    function (key, value, options) {
+        this.put(key, JSON.stringify(value), options);
+    };
+    /**
+     * @name CookieService#remove
+     *
+     * @description
+     * Remove given cookie.
+     *
+     * @param {string} key Id of the key-value pair to delete.
+     * @param {CookieOptions} options (Optional) Options object.
+     */
+    /**
+       * @name CookieService#remove
+       *
+       * @description
+       * Remove given cookie.
+       *
+       * @param {string} key Id of the key-value pair to delete.
+       * @param {CookieOptions} options (Optional) Options object.
+       */
+    CookieService.prototype.remove = /**
+       * @name CookieService#remove
+       *
+       * @description
+       * Remove given cookie.
+       *
+       * @param {string} key Id of the key-value pair to delete.
+       * @param {CookieOptions} options (Optional) Options object.
+       */
+    function (key, options) {
+        this._cookieWriter()(key, undefined, options);
+    };
+    /**
+     * @name CookieService#removeAll
+     *
+     * @description
+     * Remove all cookies.
+     */
+    /**
+       * @name CookieService#removeAll
+       *
+       * @description
+       * Remove all cookies.
+       */
+    CookieService.prototype.removeAll = /**
+       * @name CookieService#removeAll
+       *
+       * @description
+       * Remove all cookies.
+       */
+    function (options) {
+        var _this = this;
+        var cookies = this.getAll();
+        Object.keys(cookies).forEach(function (key) {
+            _this.remove(key, options);
+        });
+    };
+    CookieService.prototype._cookieReader = function () {
+        var lastCookies = {};
+        var lastCookieString = '';
+        var cookieArray, cookie, i, index, name;
+        var currentCookieString = this.cookieString;
+        if (currentCookieString !== lastCookieString) {
+            lastCookieString = currentCookieString;
+            cookieArray = lastCookieString.split('; ');
+            lastCookies = {};
+            for (i = 0; i < cookieArray.length; i++) {
+                cookie = cookieArray[i];
+                index = cookie.indexOf('=');
+                if (index > 0) {
+                    // ignore nameless cookies
+                    name = Object(__WEBPACK_IMPORTED_MODULE_2__utils__["d" /* safeDecodeURIComponent */])(cookie.substring(0, index));
+                    // the first value that is seen for a cookie is the most
+                    // specific one.  values for the same cookie name that
+                    // follow are for less specific paths.
+                    if (Object(__WEBPACK_IMPORTED_MODULE_2__utils__["a" /* isBlank */])(lastCookies[name])) {
+                        lastCookies[name] = Object(__WEBPACK_IMPORTED_MODULE_2__utils__["d" /* safeDecodeURIComponent */])(cookie.substring(index + 1));
+                    }
+                }
+            }
+        }
+        return lastCookies;
+    };
+    CookieService.prototype._cookieWriter = function () {
+        var that = this;
+        return function (name, value, options) {
+            that.cookieString = that._buildCookieString(name, value, options);
+        };
+    };
+    CookieService.prototype._buildCookieString = function (name, value, options) {
+        var opts = Object(__WEBPACK_IMPORTED_MODULE_2__utils__["c" /* mergeOptions */])(this.options, options);
+        var expires = opts.expires;
+        if (Object(__WEBPACK_IMPORTED_MODULE_2__utils__["a" /* isBlank */])(value)) {
+            expires = 'Thu, 01 Jan 1970 00:00:00 GMT';
+            value = '';
+        }
+        if (Object(__WEBPACK_IMPORTED_MODULE_2__utils__["b" /* isString */])(expires)) {
+            expires = new Date(expires);
+        }
+        var cookieValue = opts.storeUnencoded ? value : encodeURIComponent(value);
+        var str = encodeURIComponent(name) + '=' + cookieValue;
+        str += opts.path ? ';path=' + opts.path : '';
+        str += opts.domain ? ';domain=' + opts.domain : '';
+        str += expires ? ';expires=' + expires.toUTCString() : '';
+        str += opts.secure ? ';secure' : '';
+        str += opts.httpOnly ? '; HttpOnly' : '';
+        // per http://www.ietf.org/rfc/rfc2109.txt browser must allow at minimum:
+        // - 300 cookies
+        // - 20 cookies per unique domain
+        // - 4096 bytes per cookie
+        var cookieLength = str.length + 1;
+        if (cookieLength > 4096) {
+            console.log("Cookie '" + name + "' possibly not set or overflowed because it was too \n      large (" + cookieLength + " > 4096 bytes)!");
+        }
+        return str;
+    };
+    CookieService.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */] },
+    ];
+    /** @nocollapse */
+    CookieService.ctorParameters = function () { return [
+        { type: __WEBPACK_IMPORTED_MODULE_1__cookie_options_provider__["b" /* CookieOptionsProvider */], },
+    ]; };
+    return CookieService;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../ngx-cookie/src/utils.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = isBlank;
+/* unused harmony export isPresent */
+/* harmony export (immutable) */ __webpack_exports__["b"] = isString;
+/* harmony export (immutable) */ __webpack_exports__["c"] = mergeOptions;
+/* harmony export (immutable) */ __webpack_exports__["d"] = safeDecodeURIComponent;
+/* harmony export (immutable) */ __webpack_exports__["e"] = safeJsonParse;
+function isBlank(obj) {
+    return obj === undefined || obj === null;
+}
+function isPresent(obj) {
+    return obj !== undefined && obj !== null;
+}
+function isString(obj) {
+    return typeof obj === 'string';
+}
+function mergeOptions(oldOptions, newOptions) {
+    if (!newOptions) {
+        return oldOptions;
+    }
+    return {
+        path: isPresent(newOptions.path) ? newOptions.path : oldOptions.path,
+        domain: isPresent(newOptions.domain) ? newOptions.domain : oldOptions.domain,
+        expires: isPresent(newOptions.expires) ? newOptions.expires : oldOptions.expires,
+        secure: isPresent(newOptions.secure) ? newOptions.secure : oldOptions.secure,
+        storeUnencoded: isPresent(newOptions.storeUnencoded) ? newOptions.storeUnencoded : oldOptions.storeUnencoded,
+    };
+}
+function safeDecodeURIComponent(str) {
+    try {
+        return decodeURIComponent(str);
+    }
+    catch (e) {
+        return str;
+    }
+}
+function safeJsonParse(str) {
+    try {
+        return JSON.parse(str);
+    }
+    catch (e) {
+        return str;
+    }
+}
+
+
+/***/ }),
+
 /***/ "../../../../rxjs/_esm5/BehaviorSubject.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 

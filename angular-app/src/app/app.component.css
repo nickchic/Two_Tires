@@ -1,1 +1,11 @@
+/* -- Style -- */
+#outlet {
+    margin: 0 auto;
+    width: 1000px;
+    background-color: #ffffff;
+}
 
+#bg {
+    background-image: url('http://www.graco.com/content/dam/graco/ced/images/misc/bike_path_lines.jpg');
+    background-color: #000000;
+}

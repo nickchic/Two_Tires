@@ -12,6 +12,7 @@ export class AppComponent implements OnInit{
   constructor(private _userService: UserService){ }
 
   ngOnInit() {
-      this._userService.getUserStored();
+      // if(this._userService.logged_in()){ this._userService.getUserStored(); }
+      this._userService.showTime();
   }
 }

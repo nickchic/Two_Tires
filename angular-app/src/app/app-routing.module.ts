@@ -8,15 +8,16 @@ import { LoginComponent } from './login/login.component';
 import { RegComponent } from './reg/reg.component';
 import { SearchComponent } from './search/search.component';
 import { ListingComponent } from './listing/listing.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
     {
         path: '',
         pathMatch: 'full',
-        component: RegComponent
+        component: HomeComponent
     },
     {
-        path: 'browse',
+        path: 'search',
         pathMatch: 'full',
         component: SearchComponent
     },
@@ -24,6 +25,16 @@ const routes: Routes = [
         path: 'listings',
         pathMatch: 'full',
         component: ListingComponent
+    },
+    {
+        path: 'reg',
+        pathMatch: 'full',
+        component: RegComponent
+    },
+    {
+        path: 'login',
+        pathMatch: 'full',
+        component: LoginComponent
     },
 ];
 

@@ -1,6 +1,8 @@
-<div class="nav">
-    <a [routerLink]="['']">Reg</a>
-    <a [routerLink]="['listings']">Listings</a>
-    <a [routerLink]="['browse']">Browser</a>
+<div id='container'>
+    <app-nav></app-nav>
+    <div id='bg'>
+        <div id='outlet'>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
 </div>
-<router-outlet></router-outlet>
