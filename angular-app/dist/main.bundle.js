@@ -93,7 +93,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "/* -- Style -- */\n#outlet {\n    margin: 0 auto;\n    width: 1000px;\n    background-color: #ffffff;\n}\n\n#bg {\n    background-image: url('http://www.graco.com/content/dam/graco/ced/images/misc/bike_path_lines.jpg');\n    background-color: #000000;\n}\n", ""]);
+exports.push([module.i, "/* -- Style -- */\n#outlet {\n    margin: 0 auto;\n    padding: 0;\n    width: 1000px;\n    background-color: #ffffff;\n}\n\n#bg {\n    background-image: url('http://www.graco.com/content/dam/graco/ced/images/misc/bike_path_lines.jpg');\n    background-color: #000000;\n}\n", ""]);
 
 // exports
 
@@ -359,6 +359,10 @@ var BikeService = (function () {
         })
             .catch(function (error) { return __WEBPACK_IMPORTED_MODULE_2_Rxjs__["Observable"].throw(error); });
     };
+    BikeService.prototype.updateUrl = function (e) {
+        console.log('error happened', e);
+        e.srcElement.setAttribute('src', 'assets/img/no_bike.png');
+    };
     BikeService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]])
@@ -393,7 +397,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".error {\n    color:red;\n}\n\n.form_half {\n    display: inline-block;\n    width:300px;\n    vertical-align: top;\n}\n", ""]);
+exports.push([module.i, ".post {\n    margin-bottom: 20px;\n}\n", ""]);
 
 // exports
 
@@ -406,7 +410,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/create/create.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Add a Bike!</h2>\n<form (submit)='newBike($event)' #bikeForm='ngForm'>\n    <div class='form_half'>\n        <p>Title</p>\n        <div *ngIf='title.errors' class='error'>\n            <p *ngIf='title.errors.required'>Required</p>\n            <p *ngIf='title.errors.minlength'>Must be 3 characters.</p>\n        </div>\n        <input type='text'  name='bike.title' [(ngModel)]='bike.title' #title='ngModel' required minlength='3'/>\n        <p>Price</p>\n        <div *ngIf='price.errors' class='error'>\n            <p *ngIf='price.errors.pattern'>Numbers only.</p>\n        </div>\n        <input type='number' pattern=\"^[0-9]+$\" name='bike.price' [(ngModel)]='bike.price' #price='ngModel' required />\n        <p>Image URL</p>\n        <input type='text'  name='bike.image_url' [(ngModel)]='bike.image_url' #image_url='ngModel' />\n    </div>\n    <div class='form_half'>\n        <p>Description</p>\n        <div *ngIf='description.errors' class='error'>\n            <p *ngIf='description.errors.required'>Required</p>\n            <p *ngIf='description.errors.minlength'>Must be 3 characters.</p>\n        </div>\n        <input type='text'  name='bike.description' [(ngModel)]='bike.description' #description='ngModel' required minlength='3'/>\n        <p>Location</p>\n        <div *ngIf='location.errors' class='error'>\n            <p *ngIf='location.errors.required'>Required</p>\n            <p *ngIf='location.errors.minlength'>Must be 3 characters.</p>\n        </div>\n        <input type='text' name='bike.location' [(ngModel)]='bike.location' #location='ngModel' required minlength='3'/>\n        <br />\n        <input type=\"submit\" [disabled]='!bikeForm.valid'>\n    </div>   \n</form>\n"
+module.exports = "<div class='padding_4p center_80 post'>\n    <h2 class='form_header'>Post a Bike Ad</h2>\n    <form (submit)='newBike($event)' #bikeForm='ngForm'>\n        <div class='form_half'>\n            <div class='single_input_wrap'>\n                <p class='input_title'>Title*</p>\n                <input type='text'  name='bike.title' [(ngModel)]='bike.title' #title='ngModel' required minlength='3'/>\n                <div class='error'>\n                    <!-- <p *ngIf='title.errors.required'>Required</p> -->\n                    <p *ngIf='title.errors && title.errors.minlength'>Must be 3 characters.</p>\n                </div>\n            </div>\n            <div class='single_input_wrap'>\n                <p class='input_title'>Price*</p>\n                <input type='number' pattern=\"^[0-9]+$\" name='bike.price' [(ngModel)]='bike.price' #price='ngModel' required />\n                <div class='error'>\n                    <p *ngIf='price.errors && price.errors.pattern'>Numbers only.</p>\n                </div>\n            </div>\n            <div class='single_input_wrap'>\n                <p class='input_title'>Image URL</p>\n                <input type='text'  name='bike.image_url' [(ngModel)]='bike.image_url' #image_url='ngModel' />\n            </div>\n        </div>\n        <div class='form_half'>\n            <div class='single_input_wrap'>\n                <p class='input_title'>Description*</p>\n                <input type='text'  name='bike.description' [(ngModel)]='bike.description' #description='ngModel' required minlength='3'/>\n                <div class='error'>\n                    <!-- <p *ngIf='description.errors.required'>Required</p> -->\n                    <p *ngIf='description.errors && description.errors.minlength'>Must be 3 characters.</p>\n                </div>\n            </div>\n            <div class='single_input_wrap'>\n                <p class='input_title'>Location*</p>\n                <input type='text' name='bike.location' [(ngModel)]='bike.location' #location='ngModel' required minlength='3'/>\n                <div class='error'>\n                    <!-- <p *ngIf='location.errors.required'>Required</p> -->\n                    <p *ngIf='location.errors && location.errors.minlength'>Must be 3 characters.</p>\n                </div>\n            </div>\n            <div class='submit_wrap'>\n                <input type=\"submit\" [disabled]='!bikeForm.valid'>\n            </div>\n        </div>\n    </form>\n</div>\n"
 
 /***/ }),
 
@@ -480,7 +484,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".error{\n    color:red;\n}\n.form_half {\n    display: inline-block;\n    width:45%;\n    vertical-align: top;\n}\n", ""]);
+exports.push([module.i, ".edit_header{\n    margin-bottom: 15px;\n    padding-top: 20px;\n    width: 100%;\n    border-top: 1px solid #cecece;\n}\n", ""]);
 
 // exports
 
@@ -493,7 +497,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/edit/edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form (submit)='edit($event)' #editForm='ngForm' >\n    <div class='form_half'>\n        <p>Title</p>\n        <div *ngIf='title.errors' class='error'>\n            <p *ngIf='title.errors.required'>Required</p>\n            <p *ngIf='title.errors.minlength'>Must be 3 characters.</p>\n        </div>\n        <input type='text'  name='bike_to_edit.title' [(ngModel)]='bike_to_edit.title' #title='ngModel' required minlength='3'/>\n        <p>Price</p>\n        <div *ngIf='price.errors' class='error'>\n            <p *ngIf='price.errors.pattern'>Numbers only.</p>\n        </div>\n        <input type='number' pattern=\"^[0-9]+$\" name='bike_to_edit.price' [(ngModel)]='bike_to_edit.price' #price='ngModel' required />\n        <p>Image URL</p>\n        <input type='text'  name='bike_to_edit.image_url' [(ngModel)]='bike_to_edit.image_url' #image_url='ngModel' />\n    </div>\n    <div class='form_half'>\n        <p>Description</p>\n        <div *ngIf='description.errors' class='error'>\n            <p *ngIf='description.errors.required'>Required</p>\n            <p *ngIf='description.errors.minlength'>Must be 3 characters.</p>\n        </div>\n        <input type='text'  name='bike_to_edit.description' [(ngModel)]='bike_to_edit.description' #description='ngModel' required minlength='3'/>\n        <p>Location</p>\n        <div *ngIf='location.errors' class='error'>\n            <p *ngIf='location.errors.required'>Required</p>\n            <p *ngIf='location.errors.minlength'>Must be 3 characters.</p>\n        </div>\n        <input type='text' name='bike_to_edit.location' [(ngModel)]='bike_to_edit.location' #location='ngModel' required minlength='3'/>\n        <br />\n        <input type=\"submit\" [disabled]='!editForm.valid'>\n    </div>    \n</form>\n"
+module.exports = "<div class='padding_4p center_80'>\n    <h3 class='edit_header'>Edit this submission</h3>\n    <form (submit)='edit($event)' #editForm='ngForm' >\n        <div class='form_half'>\n            <div class='single_input_wrap'>\n                <p class='input_title'>Title</p>\n                <input type='text'  name='bike_to_edit.title' [(ngModel)]='bike_to_edit.title' #title='ngModel' required minlength='3'/>\n                <div *ngIf='title.errors' class='error'>\n                    <p *ngIf='title.errors.required'>Required</p>\n                    <p *ngIf='title.errors.minlength'>Must be 3 characters.</p>\n                </div>\n            </div>\n            <div class='single_input_wrap'>\n                <p class='input_title'>Price</p>\n                <input type='number' pattern=\"^[0-9]+$\" name='bike_to_edit.price' [(ngModel)]='bike_to_edit.price' #price='ngModel' required />\n                <div *ngIf='price.errors' class='error'>\n                    <p *ngIf='price.errors.pattern'>Numbers only.</p>\n                </div>\n            </div>\n            <div class='single_input_wrap'>\n                <p class='input_title'>Image URL</p>\n                <input type='text'  name='bike_to_edit.image_url' [(ngModel)]='bike_to_edit.image_url' #image_url='ngModel' />\n            </div>\n        </div>\n        <div class='form_half'>\n            <div class='single_input_wrap'>\n                <p class='input_title'>Description</p>\n                <input type='text'  name='bike_to_edit.description' [(ngModel)]='bike_to_edit.description' #description='ngModel' required minlength='3'/>\n                <div *ngIf='description.errors' class='error'>\n                    <p *ngIf='description.errors.required'>Required</p>\n                    <p *ngIf='description.errors.minlength'>Must be 3 characters.</p>\n                </div>\n            </div>\n            <div class='single_input_wrap'>\n                <p class='input_title'>Location</p>\n                <input type='text' name='bike_to_edit.location' [(ngModel)]='bike_to_edit.location' #location='ngModel' required minlength='3'/>\n                <div *ngIf='location.errors' class='error'>\n                    <p *ngIf='location.errors.required'>Required</p>\n                    <p *ngIf='location.errors.minlength'>Must be 3 characters.</p>\n                </div>\n            </div>\n            <div class='submit_wrap'>\n                <input type=\"submit\" [disabled]='!editForm.valid'>\n            </div>\n        </div>\n    </form>\n</div>\n"
 
 /***/ }),
 
@@ -566,7 +570,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "#welcome {\n    margin-bottom: 35px;\n}\n\n#welcome h1 {\n    margin-bottom: 15px;\n}\n\n#welcome p {\n\n}\n\n/* ::ng-deep app-reg,::ng-deep app-login{\n    display: inline-block;\n    vertical-align: top;\n    width:40%;\n    margin-right: 30px;\n}\n\n::ng-deep app-reg .padding_4p, ::ng-deep app-login .padding_4p {\n    padding:0;\n    display: inline-block;\n    width: 300%;\n} */\n", ""]);
 
 // exports
 
@@ -579,7 +583,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-reg></app-reg>\n<app-login></app-login>\n"
+module.exports = "<div class='padding_4p'>\n    <div id='welcome'>\n        <h1>Welcome to Two-Tires!</h1>\n        <p>Welcome to Two-Tires, a simple bicycle resale website coded and designed from scratch by Nicholas Chicirda. This site uses MEAN. To see the rest of Nick’s work and information go to <a href='http://www.nickchic.com'>nickchic.com</a>. Git Repo for this site can be seen <a href='https://github.com/nickchic/Two_Tires'>here</a>.</p>\n    </div>\n    <app-reg id='home_reg'></app-reg>\n    <app-login id='home_login'></app-login>\n</div>\n"
 
 /***/ }),
 
@@ -627,7 +631,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".bike_pic {\n    width:200px;\n    margin-right:10px\n}\n\n.info{\n    width: 100px;\n    display:inline-block;\n    vertical-align: top;\n}\n\n.bike{\n    padding: 10px;\n    border: 1px solid black;\n    width: 50%;\n}\n", ""]);
+exports.push([module.i, ".edit_buttons{\n    margin-top: 20px;\n}\n", ""]);
 
 // exports
 
@@ -640,7 +644,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/listing/listing.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<div *ngIf='logged_in'>\n    <app-create (addBike)='addBike($event)'></app-create>\n    <h2>{{ _userService.logged_in_user.first_name | titleize }}'s Bikes!</h2>\n    <div *ngIf='user_bikes.length'>\n        <div *ngFor='let bike of user_bikes; let idx = index' class='bike'>\n            <h3>{{ bike.title | titleize }}</h3>\n            <img *ngIf='bike.image_url' src=\"{{ bike.image_url }}\" alt=\"No Picture\" class='bike_pic'>\n            <div class='info'>\n                <h4>Price</h4>\n                <p>${{ bike.price }}</p>\n            </div>\n            <div class='info'>\n                <h4>Location</h4>\n                <p>{{ bike.location | titleize }}</p>\n            </div>\n            <div class='info'>\n                <h4>Description</h4>\n                <p>{{ bike.description }}</p>\n            </div>\n            <button (click)='deleteBike(bike)'>Delete</button>\n            <button (click)='showForm[idx] = !showForm[idx]'>Edit</button>\n            <app-edit [bike_to_edit]='bike' [index]='idx' *ngIf='showForm[idx]' (hide)='showForm[idx] = !showForm[idx]'></app-edit>\n        </div>\n    </div>\n    <div *ngIf='!user_bikes.length'>\n        <p>You don't seem to have any bikes.</p>\n    </div>\n</div>\n\n<div *ngIf='!logged_in'>\n    <p>Log in to see your listings!</p>\n</div>\n"
+module.exports = "\n<div *ngIf='logged_in'>\n    <app-create (addBike)='addBike($event)'></app-create>\n    <h2 class='center_80'>Your Bikes for Sale</h2>\n    <div *ngIf='user_bikes.length'>\n        <div *ngFor='let bike of user_bikes; let idx = index' class='bike center_80'>\n            <div class='center_95'>\n                <div class='bike_pic'>\n                    <div>\n                        <img *ngIf='bike.image_url' src=\"{{ bike.image_url }}\" class='real_img' (error)=\"_bikeService.updateUrl($event)\">\n                        <img *ngIf='!bike.image_url' src=\"assets/img/no_bike.png\" class='place_holder' >\n                    </div>\n                </div>\n                <div class='bike_info'>\n                    <div class='bike_top_info'>\n                        <h2 class='bike_title'>{{ bike.title | titleize }} - ${{ bike.price }}</h2>\n                        <p class='bike_location'>{{ bike.location }}</p>\n                    </div>\n                    <p class='bike_desc'>{{ bike.description }}</p>\n                    <div class='edit_buttons'>\n                        <button (click)='deleteBike(bike)'>Delete</button>\n                        <button (click)='showForm[idx] = !showForm[idx]'>Edit</button>\n                    </div>                    \n                </div>\n            </div>\n\n            <app-edit [bike_to_edit]='bike' [index]='idx' *ngIf='showForm[idx]' (hide)='showForm[idx] = !showForm[idx]'></app-edit>\n        </div>\n    </div>\n    <div *ngIf='!user_bikes.length'>\n        <p>You don't seem to have any bikes.</p>\n    </div>\n</div>\n\n<div *ngIf='!logged_in'>\n    <p>Log in to post!</p>\n</div>\n"
 
 /***/ }),
 
@@ -734,7 +738,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "#login_form{\n    width: 30%;\n    display: inline-block;\n    vertical-align: top;\n}\n", ""]);
+exports.push([module.i, "#login_form{\n    width: 30%;\n    display: inline-block;\n    vertical-align: top;\n}\n\n.error {\n    margin-bottom: 10px;\n}\n", ""]);
 
 // exports
 
@@ -747,7 +751,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id='login_form'>\n    <h2>Login</h2>\n    <div *ngIf='_userService.logged_in()'>\n        <p>{{ _userService.logged_in_user.first_name }} {{ _userService.logged_in_user.last_name }} is already logged in, want to log out?</p>\n        <button (click)='logout($event)'>Log Out</button>\n    </div>\n    <form *ngIf='!_userService.logged_in()' (submit)='login_attempt($event)' #loginForm='ngForm'>\n        <p *ngIf='error' class='error'>{{ error.error }}</p>\n        <p>Email</p>\n        <input type=\"text\" name=\"user.email\" [(ngModel)]='user.email' required>\n        <p>Password</p>\n        <input type=\"password\" name=\"user.password\" [(ngModel)]='user.password' required>\n        <br />\n        <input type=\"submit\" [disabled]='!loginForm.valid'>\n    </form>\n</div>\n"
+module.exports = "<div id='login_form' class='padding_4p'>\n    <h2 class='form_header'>Login</h2>\n    <div *ngIf='_userService.logged_in()'>\n        <p>{{ _userService.logged_in_user.first_name }} {{ _userService.logged_in_user.last_name }} is already logged in, want to log out?</p>\n        <button (click)='logout($event)'>Log Out</button>\n    </div>\n    <form *ngIf='!_userService.logged_in()' (submit)='login_attempt($event)' #loginForm='ngForm'>\n        <p *ngIf='error' class='error'>{{ error.error }}</p>\n        <div class='single_input_wrap'>\n            <p class='input_title'>Email</p>\n            <input type=\"text\" name=\"user.email\" [(ngModel)]='user.email' required>\n        </div>\n        <div class='single_input_wrap'>\n            <p class='input_title'>Password</p>\n            <input type=\"password\" name=\"user.password\" [(ngModel)]='user.password' required>\n        </div>\n        <div class='submit_wrap'>\n            <input type=\"submit\" [disabled]='!loginForm.valid'>\n        </div>\n    </form>\n</div>\n"
 
 /***/ }),
 
@@ -794,7 +798,12 @@ var LoginComponent = (function () {
             .subscribe(function (user) {
             _this._userService.login_success(user);
             _this.user = new __WEBPACK_IMPORTED_MODULE_1__user__["a" /* User */]();
-        }, function (errorResponse) { return _this.error = errorResponse.json(); });
+        }, function (errorResponse) {
+            _this.error = errorResponse.json();
+            setTimeout(function () {
+                _this.error = null;
+            }, 10000);
+        });
     };
     LoginComponent.prototype.logout = function (event) {
         var _this = this;
@@ -898,7 +907,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".error {\n    color:red;\n}\n\n#reg_form{\n    width:30%;\n    display: inline-block;\n}\n", ""]);
+exports.push([module.i, "#reg_form{\n    width:40%;\n    display: inline-block;\n}\n", ""]);
 
 // exports
 
@@ -911,7 +920,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/reg/reg.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id='reg_form' >\n    <h2>Register</h2>\n    <form (submit)='register($event)' #regForm='ngForm' >\n        <p>First Name</p>\n        <div class='error' *ngIf='first_name.errors'>\n            <p *ngIf='first_name.errors.required'>Required</p>\n            <p *ngIf='first_name.errors.minlength'>Needs to be at least 3 Characters.</p>\n        </div>\n        <input type=\"text\" name=\"user.first_name\" [(ngModel)]=\"user.first_name\" #first_name='ngModel' required minlength='3' />\n        <p>Last Name</p>\n        <div class='error' *ngIf='last_name.errors'>\n            <p *ngIf='last_name.errors.required'>Required</p>\n            <p *ngIf='last_name.errors.minlength'>Needs to be at least 3 Characters.</p>\n        </div>\n        <input type=\"text\" name=\"last_name\" [(ngModel)]=\"user.last_name\" #last_name='ngModel' required minlength='3' />\n        <p>Email</p>\n        <div class='error' *ngIf='email.errors'>\n            <p *ngIf='email.errors.required'>Required</p>\n            <p *ngIf='email.errors.minlength'>Needs to be at least 3 Characters.</p>\n            <p *ngIf='email.errors.pattern'>Please enter valid email.</p>\n        </div>\n        <p class='error' *ngIf='emailError'>{{ emailError.error }}</p>\n        <input type=\"text\" name=\"email\" [(ngModel)]=\"user.email\" #email='ngModel' required minlength='3' pattern='^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$'/>\n        <p>Password</p>\n        <div class='error' *ngIf='pw.errors'>\n            <p *ngIf='pw.errors.required'>Required</p>\n            <p *ngIf='pw.errors.minlength'>Needs to be at least 8 Characters.</p>\n            <p *ngIf='pw.errors.pattern'>Please include a capital letter, number and symbol.</p>\n        </div>\n        <input type=\"password\" name=\"password\" [(ngModel)]=\"password\" #pw='ngModel' required minlength='8' pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,32}'/>\n        <p>Confirm Password</p>\n        <div class='error' *ngIf='confirm.errors || confirm_password != password'>\n            <p *ngIf='confirm.errors && confirm.errors.required'>Required</p>\n            <p *ngIf='confirm.errors && confirm.errors.minlength'>Needs to be at least 3 Characters.</p>\n            <p *ngIf='confirm_password != password'>Needs to match.</p>\n        </div>\n        <input type=\"password\" name=\"confirm_password\" [(ngModel)]=\"confirm_password\" #confirm='ngModel' required />\n        <br />\n        <input type='submit' [disabled]='!regForm.form.valid || confirm_password != password'/>\n    </form>\n</div>\n"
+module.exports = "<div id='reg_form' class='padding_4p'>\n    <h2 class='form_header'>Register</h2>\n    <form (submit)='register($event)' #regForm='ngForm' >\n        <div class='single_input_wrap'>\n            <!-- FIRST NAME -->\n            <p class='input_title'>First Name*</p>\n            <input type=\"text\" name=\"user.first_name\" [(ngModel)]=\"user.first_name\" #first_name='ngModel' required minlength='3' />\n            <div class='error'>\n                <!-- <p *ngIf='first_name.errors.required'>Required</p> -->\n                <p *ngIf='first_name.errors && first_name.errors.minlength'>Needs to be at least 3 Characters.</p>\n            </div>\n        </div>\n        <div class='single_input_wrap'>\n            <!-- LAST NAME -->\n            <p class='input_title'>Last Name*</p>\n            <input type=\"text\" name=\"last_name\" [(ngModel)]=\"user.last_name\" #last_name='ngModel' required minlength='3' />\n            <div class='error'>\n                <!-- <p *ngIf='last_name.errors.required'>Required</p> -->\n                <p *ngIf='last_name.errors && last_name.errors.minlength'>Needs to be at least 3 Characters.</p>\n            </div>\n        </div>\n        <div class='single_input_wrap'>\n            <!-- EMAIL -->\n            <p class='input_title'>Email*</p>\n            <input type=\"text\" name=\"email\" [(ngModel)]=\"user.email\" #email='ngModel' required minlength='3' pattern='^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$'/>\n            <div class='error'>\n                <!-- <p *ngIf='email.errors.required'>Required</p> -->\n                <!-- <p *ngIf='email.errors.minlength'>Needs to be at least 3 Characters.</p> -->\n                <p *ngIf='email.errors && email.errors.pattern'>Please enter valid email.</p>\n                <p *ngIf='emailError'>{{ emailError.error | json}}</p>\n            </div>\n\n        </div>\n        <div class='single_input_wrap'>\n            <!-- PASSWORD -->\n            <p class='input_title'>Password*</p>\n            <input type=\"password\" name=\"password\" [(ngModel)]=\"password\" #pw='ngModel' required minlength='8' pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,32}'/>\n            <div class='error'>\n                <!-- <p *ngIf='pw.errors.required'>Required</p> -->\n                <p *ngIf='pw.errors && pw.errors.minlength'>Needs to be at least 8 Characters.</p>\n                <p *ngIf='pw.errors && pw.errors.pattern'>Please include a capital letter, number and symbol.</p>\n            </div>\n        </div>\n        <div class='single_input_wrap'>\n            <!-- CONFIRM PASSWORD -->\n            <p class='input_title'>Confirm PW*</p>\n            <input type=\"password\" name=\"confirm_password\" [(ngModel)]=\"confirm_password\" #confirm='ngModel' required />\n            <div class='error'>\n                <!-- <p *ngIf='confirm.errors && confirm.errors.required'>Required</p> -->\n                <!-- <p *ngIf='confirm.errors && confirm.errors.minlength'>Needs to be at least 3 Characters.</p> -->\n                <p *ngIf='confirm_password != password'>Needs to match.</p>\n            </div>\n        </div>\n        <div class='submit_wrap'>\n            <input type='submit' [disabled]='!regForm.form.valid || confirm_password != password'/>\n        </div>\n    </form>\n</div>\n"
 
 /***/ }),
 
@@ -989,7 +998,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".info{\n    width: 200px;\n    display:inline-block;\n    vertical-align: top;\n    padding: 10px;\n    border: 1px solid black;\n    margin-right: 10px;\n}\n.bike_pic{\n    width:200px;\n}\n.bike{\n    padding: 10px;\n    border: 1px solid black;\n    width: 50%;\n}\n", ""]);
+exports.push([module.i, ".search_results {\n    width: 100%;\n    background-color: #e5e5e5;\n    padding-top: 20px;\n    margin-top: 20px;\n}\n", ""]);
 
 // exports
 
@@ -1002,7 +1011,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/search/search.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Search Here!</h2>\n<form (submit)='search($event)'>\n    <input type=\"text\" name='searchTerm' [(ngModel)]='searchTerm'>\n    <br />\n    <input type=\"submit\" >\n</form>\n<br />\n<button (click)='reset()'>New Search</button>\n\n<h2>Bikes!</h2>\n<div *ngIf='all_bikes'>\n    <div *ngFor='let bike of all_bikes' class='bike'>\n        <h2>{{ bike.title }}</h2>\n        <img *ngIf='bike.image_url' src=\"{{ bike.image_url }}\" alt=\"No Picture\" class='bike_pic'>\n        <div class='info'>\n            <h4>Price</h4>\n            <p>{{ bike.price }}</p>\n        </div>\n        <div class='info'>\n            <h4>Location</h4>\n            <p>{{ bike.location }}</p>\n        </div>\n        <div class='info'>\n            <h4>Description</h4>\n            <p>{{ bike.description }}</p>\n        </div>\n        <div class='info'>\n            <h4>User</h4>\n            <p>{{ bike.user.first_name }} {{ bike.user.last_name }}</p>\n            <p>{{ bike.user.email }}</p>\n        </div>\n    </div>\n</div>\n<div *ngIf='!all_bikes'>\n    <p>Hmm...Sorry nothing here</p>\n</div>\n"
+module.exports = "<div class='padding_4p center_80'>\n    <h2 class='form_header'>Search Here!</h2>\n    <form (submit)='search($event)'>\n        <div class='single_input_wrap'>\n            <p class='input_title'>Title</p>\n            <input type=\"text\" name='searchTerm' [(ngModel)]='bike_search.title'>\n        </div>\n        <div class='single_input_wrap'>\n            <p class='input_title'>Location</p>\n            <input type=\"text\" name='searchTerm' [(ngModel)]='bike_search.location'>\n        </div>\n        <div class='single_input_wrap'>\n            <p class='input_title'>Max Price</p>\n            <input type=\"number\" name='searchTerm' [(ngModel)]='bike_search.price'>\n        </div>\n        <div class='submit_wrap'>\n            <input type=\"submit\" >\n            <button (click)='reset()'>New Search</button>\n        </div>\n    </form>\n</div>\n\n<div *ngIf='all_bikes' class='search_results'>\n\n    <h2 class='center_80'>Search Results - {{ all_bikes.length }}</h2>\n    <div *ngFor='let bike of all_bikes' class='bike center_80'>\n        <div class='center_95'>\n            <div class='bike_pic'>\n                <div>\n                    <img *ngIf='bike.image_url' src=\"{{ bike.image_url }}\" class='real_img' (error)=\"_bikeService.updateUrl($event)\">\n                    <img *ngIf='!bike.image_url' src=\"assets/img/no_bike.png\" class='place_holder' >\n                </div>\n            </div>\n            <div class='bike_info'>\n                <div class='bike_top_info'>\n                    <h2 class='bike_title'>{{ bike.title | titleize }} - ${{ bike.price }}</h2>\n                    <p class='bike_location'>{{ bike.location }}</p>\n                </div>\n                <p class='bike_user'>{{ bike.user.first_name }} {{ bike.user.last_name }} - <a href='mailto:{{bike.user.email}}'></a>{{ bike.user.email }}</p>\n                <p class='bike_desc'>{{ bike.description }}</p>\n            </div>\n        </div>\n    </div>\n</div>\n<div *ngIf='!all_bikes' class='search_results'>\n    <h2 class='center_80'>Hmm...Sorry nothing here</h2>\n</div>\n"
 
 /***/ }),
 
@@ -1013,6 +1022,7 @@ module.exports = "<h2>Search Here!</h2>\n<form (submit)='search($event)'>\n    <
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SearchComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bike_service__ = __webpack_require__("../../../../../src/app/bike.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bike__ = __webpack_require__("../../../../../src/app/bike.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1024,31 +1034,56 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var SearchComponent = (function () {
     function SearchComponent(_bikeService) {
         this._bikeService = _bikeService;
         this.all_bikes = [];
+        this.bike_search = new __WEBPACK_IMPORTED_MODULE_2__bike__["a" /* Bike */]();
     }
     SearchComponent.prototype.ngOnInit = function () {
         this.getBikes();
+        this.isImage('http://www.bikesdirect.com/products/gravity/mountain_bikes/fsx_white_21.jpg');
+        this.isImage('http://www.dsvssdcsdcsdcsdcsdc.dfsfsdf/dsfsdfs');
     };
     SearchComponent.prototype.search = function (event) {
         var _this = this;
         event.preventDefault();
-        console.log('Search!', this.searchTerm);
-        this.all_bikes = this.all_bikes.filter(function (bike) { return bike.title.toLowerCase().includes(_this.searchTerm.toLowerCase()); });
+        console.log('Search!', this.bike_search);
+        // this.all_bikes = this.all_bikes.filter(bike => bike.title.toLowerCase().includes(this.searchTerm.toLowerCase()) )
+        this.all_bikes = this.all_bikes.filter(function (bike) {
+            var titleMatch = false;
+            var locMatch = false;
+            var priceMatch = false;
+            if (!_this.bike_search.title || bike.title.toLowerCase().includes(_this.bike_search.title.toLowerCase())) {
+                titleMatch = true;
+            }
+            if (!_this.bike_search.location || bike.location.toLowerCase().includes(_this.bike_search.location.toLowerCase())) {
+                locMatch = true;
+            }
+            if (!_this.bike_search.price || bike.price <= _this.bike_search.price) {
+                priceMatch = true;
+            }
+            console.log('titleMatch', titleMatch);
+            console.log('locMatch', locMatch);
+            return (titleMatch && locMatch && priceMatch);
+        });
         if (this.all_bikes.length === 0) {
             this.all_bikes = null;
         }
     };
     SearchComponent.prototype.reset = function () {
-        this.searchTerm = '';
+        this.bike_search = new __WEBPACK_IMPORTED_MODULE_2__bike__["a" /* Bike */]();
         this.getBikes();
     };
     SearchComponent.prototype.getBikes = function () {
         var _this = this;
         this._bikeService.getAllBikes()
             .subscribe(function (bikes) { return _this.all_bikes = bikes; });
+    };
+    SearchComponent.prototype.isImage = function (src) {
+        // this.http.get(src)
+        //     .catch(error => console.log('got error', error))
     };
     SearchComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({

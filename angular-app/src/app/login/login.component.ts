@@ -38,7 +38,12 @@ export class LoginComponent implements OnInit {
                     this._userService.login_success(user);
                     this.user = new User();
                 },
-                errorResponse => this.error = errorResponse.json()
+                errorResponse => {
+                    this.error = errorResponse.json()
+                    setTimeout(()=>{
+                        this.error = null;
+                    }, 10000)
+                }
             );
     }
 

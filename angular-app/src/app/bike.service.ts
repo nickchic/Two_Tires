@@ -47,4 +47,9 @@ export class BikeService {
             .catch((error)=> Observable.throw(error))
     }
 
+    updateUrl(e:Event):void{
+        console.log('error happened', e);
+        e.srcElement.setAttribute('src', 'assets/img/no_bike.png')
+    }
+
 }

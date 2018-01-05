@@ -1,6 +1,7 @@
 /* -- Style -- */
 #outlet {
     margin: 0 auto;
+    padding: 0;
     width: 1000px;
     background-color: #ffffff;
 }

@@ -1,33 +1,47 @@
-<form (submit)='edit($event)' #editForm='ngForm' >
-    <div class='form_half'>
-        <p>Title</p>
-        <div *ngIf='title.errors' class='error'>
-            <p *ngIf='title.errors.required'>Required</p>
-            <p *ngIf='title.errors.minlength'>Must be 3 characters.</p>
+<div class='padding_4p center_80'>
+    <h3 class='edit_header'>Edit this submission</h3>
+    <form (submit)='edit($event)' #editForm='ngForm' >
+        <div class='form_half'>
+            <div class='single_input_wrap'>
+                <p class='input_title'>Title</p>
+                <input type='text'  name='bike_to_edit.title' [(ngModel)]='bike_to_edit.title' #title='ngModel' required minlength='3'/>
+                <div *ngIf='title.errors' class='error'>
+                    <p *ngIf='title.errors.required'>Required</p>
+                    <p *ngIf='title.errors.minlength'>Must be 3 characters.</p>
+                </div>
+            </div>
+            <div class='single_input_wrap'>
+                <p class='input_title'>Price</p>
+                <input type='number' pattern="^[0-9]+$" name='bike_to_edit.price' [(ngModel)]='bike_to_edit.price' #price='ngModel' required />
+                <div *ngIf='price.errors' class='error'>
+                    <p *ngIf='price.errors.pattern'>Numbers only.</p>
+                </div>
+            </div>
+            <div class='single_input_wrap'>
+                <p class='input_title'>Image URL</p>
+                <input type='text'  name='bike_to_edit.image_url' [(ngModel)]='bike_to_edit.image_url' #image_url='ngModel' />
+            </div>
         </div>
-        <input type='text'  name='bike_to_edit.title' [(ngModel)]='bike_to_edit.title' #title='ngModel' required minlength='3'/>
-        <p>Price</p>
-        <div *ngIf='price.errors' class='error'>
-            <p *ngIf='price.errors.pattern'>Numbers only.</p>
+        <div class='form_half'>
+            <div class='single_input_wrap'>
+                <p class='input_title'>Description</p>
+                <input type='text'  name='bike_to_edit.description' [(ngModel)]='bike_to_edit.description' #description='ngModel' required minlength='3'/>
+                <div *ngIf='description.errors' class='error'>
+                    <p *ngIf='description.errors.required'>Required</p>
+                    <p *ngIf='description.errors.minlength'>Must be 3 characters.</p>
+                </div>
+            </div>
+            <div class='single_input_wrap'>
+                <p class='input_title'>Location</p>
+                <input type='text' name='bike_to_edit.location' [(ngModel)]='bike_to_edit.location' #location='ngModel' required minlength='3'/>
+                <div *ngIf='location.errors' class='error'>
+                    <p *ngIf='location.errors.required'>Required</p>
+                    <p *ngIf='location.errors.minlength'>Must be 3 characters.</p>
+                </div>
+            </div>
+            <div class='submit_wrap'>
+                <input type="submit" [disabled]='!editForm.valid'>
+            </div>
         </div>
-        <input type='number' pattern="^[0-9]+$" name='bike_to_edit.price' [(ngModel)]='bike_to_edit.price' #price='ngModel' required />
-        <p>Image URL</p>
-        <input type='text'  name='bike_to_edit.image_url' [(ngModel)]='bike_to_edit.image_url' #image_url='ngModel' />
-    </div>
-    <div class='form_half'>
-        <p>Description</p>
-        <div *ngIf='description.errors' class='error'>
-            <p *ngIf='description.errors.required'>Required</p>
-            <p *ngIf='description.errors.minlength'>Must be 3 characters.</p>
-        </div>
-        <input type='text'  name='bike_to_edit.description' [(ngModel)]='bike_to_edit.description' #description='ngModel' required minlength='3'/>
-        <p>Location</p>
-        <div *ngIf='location.errors' class='error'>
-            <p *ngIf='location.errors.required'>Required</p>
-            <p *ngIf='location.errors.minlength'>Must be 3 characters.</p>
-        </div>
-        <input type='text' name='bike_to_edit.location' [(ngModel)]='bike_to_edit.location' #location='ngModel' required minlength='3'/>
-        <br />
-        <input type="submit" [disabled]='!editForm.valid'>
-    </div>    
-</form>
+    </form>
+</div>

@@ -3,3 +3,7 @@
     display: inline-block;
     vertical-align: top;
 }
+
+.error {
+    margin-bottom: 10px;
+}

@@ -1,0 +1,24 @@
+#welcome {
+    margin-bottom: 35px;
+}
+
+#welcome h1 {
+    margin-bottom: 15px;
+}
+
+#welcome p {
+
+}
+
+/* ::ng-deep app-reg,::ng-deep app-login{
+    display: inline-block;
+    vertical-align: top;
+    width:40%;
+    margin-right: 30px;
+}
+
+::ng-deep app-reg .padding_4p, ::ng-deep app-login .padding_4p {
+    padding:0;
+    display: inline-block;
+    width: 300%;
+} */

@@ -1,9 +1,3 @@
-.error {
-    color:red;
-}
-
-.form_half {
-    display: inline-block;
-    width:300px;
-    vertical-align: top;
+.post {
+    margin-bottom: 20px;
 }

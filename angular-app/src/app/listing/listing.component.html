@@ -1,25 +1,29 @@
 
 <div *ngIf='logged_in'>
     <app-create (addBike)='addBike($event)'></app-create>
-    <h2>{{ _userService.logged_in_user.first_name | titleize }}'s Bikes!</h2>
+    <h2 class='center_80'>Your Bikes for Sale</h2>
     <div *ngIf='user_bikes.length'>
-        <div *ngFor='let bike of user_bikes; let idx = index' class='bike'>
-            <h3>{{ bike.title | titleize }}</h3>
-            <img *ngIf='bike.image_url' src="{{ bike.image_url }}" alt="No Picture" class='bike_pic'>
-            <div class='info'>
-                <h4>Price</h4>
-                <p>${{ bike.price }}</p>
+        <div *ngFor='let bike of user_bikes; let idx = index' class='bike center_80'>
+            <div class='center_95'>
+                <div class='bike_pic'>
+                    <div>
+                        <img *ngIf='bike.image_url' src="{{ bike.image_url }}" class='real_img' (error)="_bikeService.updateUrl($event)">
+                        <img *ngIf='!bike.image_url' src="assets/img/no_bike.png" class='place_holder' >
+                    </div>
+                </div>
+                <div class='bike_info'>
+                    <div class='bike_top_info'>
+                        <h2 class='bike_title'>{{ bike.title | titleize }} - ${{ bike.price }}</h2>
+                        <p class='bike_location'>{{ bike.location }}</p>
+                    </div>
+                    <p class='bike_desc'>{{ bike.description }}</p>
+                    <div class='edit_buttons'>
+                        <button (click)='deleteBike(bike)'>Delete</button>
+                        <button (click)='showForm[idx] = !showForm[idx]'>Edit</button>
+                    </div>                    
+                </div>
             </div>
-            <div class='info'>
-                <h4>Location</h4>
-                <p>{{ bike.location | titleize }}</p>
-            </div>
-            <div class='info'>
-                <h4>Description</h4>
-                <p>{{ bike.description }}</p>
-            </div>
-            <button (click)='deleteBike(bike)'>Delete</button>
-            <button (click)='showForm[idx] = !showForm[idx]'>Edit</button>
+
             <app-edit [bike_to_edit]='bike' [index]='idx' *ngIf='showForm[idx]' (hide)='showForm[idx] = !showForm[idx]'></app-edit>
         </div>
     </div>
@@ -29,5 +33,5 @@
 </div>
 
 <div *ngIf='!logged_in'>
-    <p>Log in to see your listings!</p>
+    <p>Log in to post!</p>
 </div>

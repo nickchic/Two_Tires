@@ -45,11 +45,168 @@ table {
 }
 
 
-/* -- FONTS -- */
-
+/* -- FONTS FACE -- */
 
 @font-face {
   font-family: 'HelveticaNeueLTStd-Lt';
   src: url('./assets/fonts/HelveticaNeueLTStd-Lt.otf');
   src: local('./assets/fonts/HelveticaNeueLTStd-Lt.otf');
+}
+
+@font-face {
+  font-family: 'HelveticaNeueLTStd-Bd';
+  src: url('./assets/fonts/HelveticaNeueLTStd-Bd.otf');
+  src: local('./assets/fonts/HelveticaNeueLTStd-Bd.otf');
+}
+
+/* -- FONTS -- */
+
+h1 {
+	font-family: 'HelveticaNeueLTStd-Bd', Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 2em;
+}
+
+h2 {
+	font-family: 'HelveticaNeueLTStd-Bd', Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 1.5em;
+}
+
+h3 {
+	font-family: 'HelveticaNeueLTStd-Bd', Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 1.3em;
+}
+
+
+p {
+	font-family: 'HelveticaNeueLTStd-Lt', Helvetica, sans-serif;
+	font-size: 1em;
+	line-height: 1.7em;
+}
+
+.error {
+	color: red;
+	font-size: 0.7em;
+	margin-bottom: 0;
+}
+
+.input_title {
+	display: inline-block;
+	width: 30%;
+	padding-right: 5px;
+}
+
+.single_input_wrap input{
+	width: 40%;
+}
+
+.single_input_wrap {
+	display: block;
+	margin-bottom: 10px
+}
+
+.form_header{
+	margin-bottom: 15px;
+}
+
+.submit_wrap {
+	width:74%;
+	text-align: right;
+}
+
+.form_half {
+    display: inline-block;
+    width:45%;
+    vertical-align: top;
+}
+
+
+/* -- BASIC LAYOUT -- */
+
+.padding_4p {
+    width: 92%;
+    padding: 4% 4% 0;
+}
+
+.center_80 {
+	width: 80%;
+    margin: 0 auto;
+}
+
+.center_95{
+	width: 95%;
+    margin: 0 auto;
+}
+
+/* -- HOME PAGE -- */
+
+#home_reg .padding_4p, #home_login .padding_4p{
+ 	padding: 0;
+	display: inline-block;
+}
+
+/* -- BIKES -- */
+
+.bike {
+    border: 1px solid #cecece;
+    background-color: #ffffff;
+    margin-top: 20px;
+    padding: 20px 0;
+}
+
+.bike_info{
+    width: 58%;
+    display:inline-block;
+    vertical-align: top;
+    padding: 10px;
+    margin-left: 3%;
+}
+
+.bike_pic{
+    width:33%;
+    display: inline-block;
+    text-align: center;
+}
+
+.bike_pic div{
+    width: 90%;
+    margin: auto;
+}
+
+.bike_pic div .real_img{
+    width: 100%;
+}
+
+.bike_pic div .place_holder{
+    width: 225px;
+}
+
+.bike_title{
+    display: inline-block;
+    vertical-align: top;
+    width: 69%;
+}
+
+.bike_location{
+    display: inline-block;
+    width: 30%;
+    vertical-align: top;
+    text-align: right;
+}
+
+.bike_user{
+    width: 100%;
+    border-bottom: 1px solid #cecece;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.bike_top_info{
+    margin-bottom: 10px;
+}
+
+.bike_desc{
+
 }

@@ -1,8 +1,6 @@
-.error{
-    color:red;
-}
-.form_half {
-    display: inline-block;
-    width:45%;
-    vertical-align: top;
+.edit_header{
+    margin-bottom: 15px;
+    padding-top: 20px;
+    width: 100%;
+    border-top: 1px solid #cecece;
 }
