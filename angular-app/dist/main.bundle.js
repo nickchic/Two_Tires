@@ -93,7 +93,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "/* -- Style -- */\n#outlet {\n    margin: 0 auto;\n    padding: 0;\n    width: 1000px;\n    background-color: #ffffff;\n}\n\n#bg {\n    background-image: url('http://www.graco.com/content/dam/graco/ced/images/misc/bike_path_lines.jpg');\n    background-color: #000000;\n}\n", ""]);
+exports.push([module.i, "/* -- Style -- */\n#outlet {\n    margin: 0 auto;\n    padding: 0;\n    width: 1000px;\n    background-color: #ffffff;\n    min-height: 100vh;\n}\n\n#bg {\n    background-image: url(" + __webpack_require__("../../../../../src/assets/img/bg.jpg") + ");\n    background-size: 100vh;\n    background-color: #272727;\n    min-height: 100vh;\n    background-repeat: repeat-x;\n}\n\n#container{\n    min-height: 100vh;\n}\n", ""]);
 
 // exports
 
@@ -1288,6 +1288,13 @@ var User = (function () {
 }());
 
 
+
+/***/ }),
+
+/***/ "../../../../../src/assets/img/bg.jpg":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "bg.28979d883ad782b91aa8.jpg";
 
 /***/ }),
 

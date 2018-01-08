@@ -44,6 +44,19 @@ table {
 	border-spacing: 0;
 }
 
+html{
+	min-height: 100%;
+}
+
+body, app-root, router-outlet  {
+	height: 100%;
+}
+
+.ng-scope{
+	min-height: 100%;
+}
+
+
 
 /* -- FONTS FACE -- */
 
@@ -124,6 +137,7 @@ p {
 
 
 /* -- BASIC LAYOUT -- */
+
 
 .padding_4p {
     width: 92%;

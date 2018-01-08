@@ -4,9 +4,17 @@
     padding: 0;
     width: 1000px;
     background-color: #ffffff;
+    min-height: 100vh;
 }
 
 #bg {
-    background-image: url('http://www.graco.com/content/dam/graco/ced/images/misc/bike_path_lines.jpg');
-    background-color: #000000;
+    background-image: url('../assets/img/bg.jpg');
+    background-size: 100vh;
+    background-color: #272727;
+    min-height: 100vh;
+    background-repeat: repeat-x;
+}
+
+#container{
+    min-height: 100vh;
 }
