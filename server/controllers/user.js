@@ -23,7 +23,7 @@ function toTitleCase(string) {
 }
 
 module.exports = {
-    show: (request, response) => {
+    index: (request, response) => {
         User.find({})
             .then( (users) => {
                 response.json(users);
@@ -87,7 +87,7 @@ module.exports = {
             response.send(400,{error: 'Login Failed'})
         })
     },
-    getById: (request, response) => {
+    show: (request, response) => {
         console.log('getbyid', request.body);
         User.findById(request.body).populate('bikes').exec()
         .then( (user) => {

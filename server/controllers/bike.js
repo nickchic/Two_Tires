@@ -3,7 +3,7 @@ var Bike = mongoose.model('Bike');
 const User = mongoose.model('User')
 const userController = require('./../controllers/user');
 module.exports = {
-    show: (request, response) => {
+    index: (request, response) => {
         Bike.find({}).populate('user').exec()
             .then( (bikes) => {
                 response.json(bikes);
@@ -17,12 +17,12 @@ module.exports = {
 
         Bike.create(new_bike)
             .then( (bike) => {
-                User.findById({_id: request.body.user._id})
+                return User.findById({_id: request.body.user._id})
                     .then((user) => {
                         user.bikes.push(bike)
                         user.save();
-                    })
-                response.json(bike);
+                        response.json(bike);
+                    })                
                 console.log('new bike!', bike);
             })
             .catch(error => console.log(error))

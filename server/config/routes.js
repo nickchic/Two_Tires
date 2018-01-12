@@ -9,14 +9,14 @@ const bikeController = require('./../controllers/bike');
 
 module.exports = function(app) {
 
-    app.get('/users', userController.show);
-    app.post('/user', userController.getById);
+    app.get('/users', userController.index);
+    app.post('/user', userController.show);
     app.post('/users', userController.create);
 
     app.post('/login', userController.login);
     app.delete('/logout', userController.logout);
 
-    app.get('/bikes', bikeController.show);
+    app.get('/bikes', bikeController.index);
     app.post('/bikes', bikeController.create);
     app.delete('/bikes/:id', bikeController.destroy);
     app.put('/bikes/:id', bikeController.update);
