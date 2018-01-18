@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt-nodejs');
 
 function completeLogin(request, response, user) {
     console.log('complete login');
