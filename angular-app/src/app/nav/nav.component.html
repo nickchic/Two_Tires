@@ -1,6 +1,6 @@
 <div id="nav-container">
     <div id='nav'>
-        <a [routerLink]="['']"><img id='logo' src='assets/img/twotires_logo.png' alt='logo'/></a>
+        <a [routerLink]="['']"><img id='logo' [src]='assets/img/twotires_logo.png' alt='logo'/></a>
         <div id='links'>
             <a [routerLink]="['reg']" *ngIf='!_userService.logged_in()'>Register</a>
             <a [routerLink]="['login']" *ngIf='!_userService.logged_in()'>Login</a>
