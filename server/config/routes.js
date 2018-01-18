@@ -23,6 +23,9 @@ module.exports = function(app) {
     // app.get('/players/:name', playerController.getByName);
     // app.delete('/players/:id', playerController.delete);
 
-    app.all("*", (request, response) => { response.sendFile(path.resolve("./angular-app/dist/index.html")) });
+    app.all("*", (request, response) => {
+        console.log('GRR', request)
+        response.sendFile(path.resolve("./angular-app/dist/index.html"))
+    });
 
 }
