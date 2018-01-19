@@ -852,7 +852,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/nav/nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"nav-container\">\n    <div id='nav'>\n        <a [routerLink]=\"['']\"><img id='logo' [src]=\"logo\" alt='logo'/></a>\n        <div id='links'>\n            <a [routerLink]=\"['reg']\" *ngIf='!_userService.logged_in()'>Register</a>\n            <a [routerLink]=\"['login']\" *ngIf='!_userService.logged_in()'>Login</a>\n            <a [routerLink]=\"['listings']\" *ngIf='_userService.logged_in()'>My Listings</a>\n            <a [routerLink]=\"['search']\">Search</a>\n            <a [routerLink]=\"['']\" (click)='logout()' *ngIf='_userService.logged_in()'>Logout</a>\n        </div>\n    </div>\n</div>\n"
+module.exports = "<div id=\"nav-container\">\n    <div id='nav'>\n        <a [routerLink]=\"['']\"><img id='logo' [src]=\"logo\" alt='logo'/></a>\n        <div id='links'>\n            <a [routerLink]=\"['listings']\" *ngIf='_userService.logged_in()'>My Listings</a>\n            <a [routerLink]=\"['search']\">Search</a>\n            <a [routerLink]=\"['']\" (click)='logout()' *ngIf='_userService.logged_in()'>Logout</a>\n            <a [routerLink]=\"['reg']\" *ngIf='!_userService.logged_in()'>Register</a>\n            <a [routerLink]=\"['login']\" *ngIf='!_userService.logged_in()'>Login</a>\n        </div>\n    </div>\n</div>\n"
 
 /***/ }),
 

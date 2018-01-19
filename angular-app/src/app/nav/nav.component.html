@@ -2,11 +2,11 @@
     <div id='nav'>
         <a [routerLink]="['']"><img id='logo' [src]="logo" alt='logo'/></a>
         <div id='links'>
-            <a [routerLink]="['reg']" *ngIf='!_userService.logged_in()'>Register</a>
-            <a [routerLink]="['login']" *ngIf='!_userService.logged_in()'>Login</a>
             <a [routerLink]="['listings']" *ngIf='_userService.logged_in()'>My Listings</a>
             <a [routerLink]="['search']">Search</a>
             <a [routerLink]="['']" (click)='logout()' *ngIf='_userService.logged_in()'>Logout</a>
+            <a [routerLink]="['reg']" *ngIf='!_userService.logged_in()'>Register</a>
+            <a [routerLink]="['login']" *ngIf='!_userService.logged_in()'>Login</a>
         </div>
     </div>
 </div>
