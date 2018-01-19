@@ -100,7 +100,6 @@ export class UserService {
         const expired = parseInt(this._cookieService.get('expiration'),10);
         const userID = this._cookieService.get('userID');
         const session = this._cookieService.get('session');
-
         return Boolean(session && userID && expired && expired > Date.now());
     }
 

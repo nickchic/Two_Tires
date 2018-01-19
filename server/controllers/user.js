@@ -9,9 +9,7 @@ function completeLogin(request, response, user) {
     delete request.session.user.password;
 
     response.cookie('userID', user._id.toString());
-    response.cookie('expiration', Date.now() + 86400 * 1000);
-    console.log('now', Date.now());
-    console.log('later', Date.now() + 86400 * 1000);
+    response.cookie('expiration', Date.now() + 24 * 60 * 60 * 1000);
 
     response.json(user);
 }
