@@ -190,7 +190,8 @@ p {
 }
 
 .bike_pic div .real_img{
-    width: 100%;
+    max-width: 100%;
+	max-height: 200px;
 }
 
 .bike_pic div .place_holder{

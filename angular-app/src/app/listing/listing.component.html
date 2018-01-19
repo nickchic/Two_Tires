@@ -20,18 +20,18 @@
                     <div class='edit_buttons'>
                         <button (click)='deleteBike(bike)'>Delete</button>
                         <button (click)='showForm[idx] = !showForm[idx]'>Edit</button>
-                    </div>                    
+                    </div>
                 </div>
             </div>
 
             <app-edit [bike_to_edit]='bike' [index]='idx' *ngIf='showForm[idx]' (hide)='showForm[idx] = !showForm[idx]'></app-edit>
         </div>
     </div>
-    <div *ngIf='!user_bikes.length'>
+    <div *ngIf='!user_bikes.length' class='center_80 padding_4p'>
         <p>You don't seem to have any bikes.</p>
     </div>
 </div>
 
-<div *ngIf='!logged_in'>
+<div *ngIf='!logged_in' class='center_80 padding_4p'>
     <p>Log in to post!</p>
 </div>

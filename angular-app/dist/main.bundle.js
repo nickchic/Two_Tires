@@ -644,7 +644,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/listing/listing.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<div *ngIf='logged_in'>\n    <app-create (addBike)='addBike($event)'></app-create>\n    <h2 class='center_80'>Your Bikes for Sale</h2>\n    <div *ngIf='user_bikes.length'>\n        <div *ngFor='let bike of user_bikes; let idx = index' class='bike center_80'>\n            <div class='center_95'>\n                <div class='bike_pic'>\n                    <div>\n                        <img *ngIf='bike.image_url' src=\"{{ bike.image_url }}\" class='real_img' (error)=\"_bikeService.updateUrl($event)\">\n                        <img *ngIf='!bike.image_url' src=\"assets/img/no_bike.png\" class='place_holder' >\n                    </div>\n                </div>\n                <div class='bike_info'>\n                    <div class='bike_top_info'>\n                        <h2 class='bike_title'>{{ bike.title | titleize }} - ${{ bike.price }}</h2>\n                        <p class='bike_location'>{{ bike.location }}</p>\n                    </div>\n                    <p class='bike_desc'>{{ bike.description }}</p>\n                    <div class='edit_buttons'>\n                        <button (click)='deleteBike(bike)'>Delete</button>\n                        <button (click)='showForm[idx] = !showForm[idx]'>Edit</button>\n                    </div>                    \n                </div>\n            </div>\n\n            <app-edit [bike_to_edit]='bike' [index]='idx' *ngIf='showForm[idx]' (hide)='showForm[idx] = !showForm[idx]'></app-edit>\n        </div>\n    </div>\n    <div *ngIf='!user_bikes.length'>\n        <p>You don't seem to have any bikes.</p>\n    </div>\n</div>\n\n<div *ngIf='!logged_in'>\n    <p>Log in to post!</p>\n</div>\n"
+module.exports = "\n<div *ngIf='logged_in'>\n    <app-create (addBike)='addBike($event)'></app-create>\n    <h2 class='center_80'>Your Bikes for Sale</h2>\n    <div *ngIf='user_bikes.length'>\n        <div *ngFor='let bike of user_bikes; let idx = index' class='bike center_80'>\n            <div class='center_95'>\n                <div class='bike_pic'>\n                    <div>\n                        <img *ngIf='bike.image_url' src=\"{{ bike.image_url }}\" class='real_img' (error)=\"_bikeService.updateUrl($event)\">\n                        <img *ngIf='!bike.image_url' src=\"assets/img/no_bike.png\" class='place_holder' >\n                    </div>\n                </div>\n                <div class='bike_info'>\n                    <div class='bike_top_info'>\n                        <h2 class='bike_title'>{{ bike.title | titleize }} - ${{ bike.price }}</h2>\n                        <p class='bike_location'>{{ bike.location }}</p>\n                    </div>\n                    <p class='bike_desc'>{{ bike.description }}</p>\n                    <div class='edit_buttons'>\n                        <button (click)='deleteBike(bike)'>Delete</button>\n                        <button (click)='showForm[idx] = !showForm[idx]'>Edit</button>\n                    </div>\n                </div>\n            </div>\n\n            <app-edit [bike_to_edit]='bike' [index]='idx' *ngIf='showForm[idx]' (hide)='showForm[idx] = !showForm[idx]'></app-edit>\n        </div>\n    </div>\n    <div *ngIf='!user_bikes.length' class='center_80 padding_4p'>\n        <p>You don't seem to have any bikes.</p>\n    </div>\n</div>\n\n<div *ngIf='!logged_in' class='center_80 padding_4p'>\n    <p>Log in to post!</p>\n</div>\n"
 
 /***/ }),
 
@@ -852,7 +852,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/nav/nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"nav-container\">\n    <div id='nav'>\n        <a [routerLink]=\"['']\"><img id='logo' [src]=\"logo\" alt='logo'/></a>\n        <div id='links'>\n            <a [routerLink]=\"['reg']\" *ngIf='!_userService.logged_in()'>Register</a>\n            <a [routerLink]=\"['login']\" *ngIf='!_userService.logged_in()'>Login</a>\n            <a [routerLink]=\"['']\" (click)='logout()' *ngIf='_userService.logged_in()'>Logout</a>\n            <a [routerLink]=\"['listings']\" *ngIf='_userService.logged_in()'>Listings</a>\n            <a [routerLink]=\"['search']\">Search</a>\n        </div>\n    </div>\n</div>\n"
+module.exports = "<div id=\"nav-container\">\n    <div id='nav'>\n        <a [routerLink]=\"['']\"><img id='logo' [src]=\"logo\" alt='logo'/></a>\n        <div id='links'>\n            <a [routerLink]=\"['reg']\" *ngIf='!_userService.logged_in()'>Register</a>\n            <a [routerLink]=\"['login']\" *ngIf='!_userService.logged_in()'>Login</a>\n            <a [routerLink]=\"['listings']\" *ngIf='_userService.logged_in()'>My Listings</a>\n            <a [routerLink]=\"['search']\">Search</a>\n            <a [routerLink]=\"['']\" (click)='logout()' *ngIf='_userService.logged_in()'>Logout</a>\n        </div>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -999,7 +999,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".search_results {\n    width: 100%;\n    background-color: #e5e5e5;\n    padding-top: 20px;\n    margin-top: 20px;\n}\n", ""]);
+exports.push([module.i, ".search_results {\n    width: 100%;\n    background-color: #e5e5e5;\n    padding-top: 20px;\n    margin-top: 20px;\n    padding-bottom: 20px;\n}\n", ""]);
 
 // exports
 
@@ -1012,7 +1012,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/search/search.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class='padding_4p center_80'>\n    <h2 class='form_header'>Search Here!</h2>\n    <form (submit)='search($event)'>\n        <div class='single_input_wrap'>\n            <p class='input_title'>Title</p>\n            <input type=\"text\" name='searchTerm' [(ngModel)]='bike_search.title'>\n        </div>\n        <div class='single_input_wrap'>\n            <p class='input_title'>Location</p>\n            <input type=\"text\" name='searchTerm' [(ngModel)]='bike_search.location'>\n        </div>\n        <div class='single_input_wrap'>\n            <p class='input_title'>Max Price</p>\n            <input type=\"number\" name='searchTerm' [(ngModel)]='bike_search.price'>\n        </div>\n        <div class='submit_wrap'>\n            <input type=\"submit\" >\n            <button (click)='reset()'>New Search</button>\n        </div>\n    </form>\n</div>\n\n<div *ngIf='all_bikes' class='search_results'>\n\n    <h2 class='center_80'>Search Results - {{ all_bikes.length }}</h2>\n    <div *ngFor='let bike of all_bikes' class='bike center_80'>\n        <div class='center_95'>\n            <div class='bike_pic'>\n                <div>\n                    <img *ngIf='bike.image_url' src=\"{{ bike.image_url }}\" class='real_img' (error)=\"_bikeService.updateUrl($event)\">\n                    <img *ngIf='!bike.image_url' src=\"assets/img/no_bike.png\" class='place_holder' >\n                </div>\n            </div>\n            <div class='bike_info'>\n                <div class='bike_top_info'>\n                    <h2 class='bike_title'>{{ bike.title | titleize }} - ${{ bike.price }}</h2>\n                    <p class='bike_location'>{{ bike.location }}</p>\n                </div>\n                <p class='bike_user'>{{ bike.user.first_name }} {{ bike.user.last_name }} - <a href='mailto:{{bike.user.email}}'></a>{{ bike.user.email }}</p>\n                <p class='bike_desc'>{{ bike.description }}</p>\n            </div>\n        </div>\n    </div>\n</div>\n<div *ngIf='!all_bikes' class='search_results'>\n    <h2 class='center_80'>Hmm...Sorry nothing here</h2>\n</div>\n"
+module.exports = "<div class='padding_4p center_80'>\n    <h2 class='form_header'>Search Here!</h2>\n    <form (submit)='search($event)'>\n        <div class='single_input_wrap'>\n            <p class='input_title'>Title</p>\n            <input type=\"text\" name='searchTerm' [(ngModel)]='bike_search.title'>\n        </div>\n        <div class='single_input_wrap'>\n            <p class='input_title'>Location</p>\n            <input type=\"text\" name='searchTerm' [(ngModel)]='bike_search.location'>\n        </div>\n        <div class='single_input_wrap'>\n            <p class='input_title'>Max Price</p>\n            <input type=\"number\" name='searchTerm' [(ngModel)]='bike_search.price'>\n        </div>\n        <div class='submit_wrap'>\n            <button (click)='reset()'>Reset Search</button>\n            <input type=\"submit\" >            \n        </div>\n    </form>\n</div>\n\n<div *ngIf='all_bikes' class='search_results'>\n\n    <h2 *ngIf='searched' class='center_80'>Search Results - {{ all_bikes.length }}</h2>\n    <h2 *ngIf='!searched' class='center_80'>All Bikes - {{ all_bikes.length }}</h2>\n    <div *ngFor='let bike of all_bikes' class='bike center_80'>\n        <div class='center_95'>\n            <div class='bike_pic'>\n                <div>\n                    <img *ngIf='bike.image_url' src=\"{{ bike.image_url }}\" class='real_img' (error)=\"_bikeService.updateUrl($event)\">\n                    <img *ngIf='!bike.image_url' src=\"assets/img/no_bike.png\" class='place_holder' >\n                </div>\n            </div>\n            <div class='bike_info'>\n                <div class='bike_top_info'>\n                    <h2 class='bike_title'>{{ bike.title | titleize }} - ${{ bike.price }}</h2>\n                    <p class='bike_location'>{{ bike.location }}</p>\n                </div>\n                <p class='bike_user'>{{ bike.user.first_name }} {{ bike.user.last_name }} - <a href='mailto:{{bike.user.email}}'></a>{{ bike.user.email }}</p>\n                <p class='bike_desc'>{{ bike.description }}</p>\n            </div>\n        </div>\n    </div>\n</div>\n<div *ngIf='!all_bikes' class='search_results'>\n    <h2 class='center_80'>Hmm...Sorry nothing here</h2>\n</div>\n"
 
 /***/ }),
 
@@ -1043,6 +1043,7 @@ var SearchComponent = (function () {
         this.bike_search = new __WEBPACK_IMPORTED_MODULE_2__bike__["a" /* Bike */]();
     }
     SearchComponent.prototype.ngOnInit = function () {
+        this.searched = false;
         this.getBikes();
         this.isImage('http://www.bikesdirect.com/products/gravity/mountain_bikes/fsx_white_21.jpg');
         this.isImage('http://www.dsvssdcsdcsdcsdcsdc.dfsfsdf/dsfsdfs');
@@ -1050,6 +1051,7 @@ var SearchComponent = (function () {
     SearchComponent.prototype.search = function (event) {
         var _this = this;
         event.preventDefault();
+        this.searched = true;
         console.log('Search!', this.bike_search);
         // this.all_bikes = this.all_bikes.filter(bike => bike.title.toLowerCase().includes(this.searchTerm.toLowerCase()) )
         this.all_bikes = this.all_bikes.filter(function (bike) {
@@ -1074,6 +1076,8 @@ var SearchComponent = (function () {
         }
     };
     SearchComponent.prototype.reset = function () {
+        event.preventDefault();
+        this.searched = false;
         this.bike_search = new __WEBPACK_IMPORTED_MODULE_2__bike__["a" /* Bike */]();
         this.getBikes();
     };

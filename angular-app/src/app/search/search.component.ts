@@ -13,12 +13,13 @@ export class SearchComponent implements OnInit {
 
     all_bikes: Bike[] = [];
     searchTerm: string;
-
+    searched :boolean;
     bike_search: Bike = new Bike();
 
     constructor(private _bikeService: BikeService) { }
 
     ngOnInit() {
+        this.searched = false;
         this.getBikes();
         this.isImage('http://www.bikesdirect.com/products/gravity/mountain_bikes/fsx_white_21.jpg');
         this.isImage('http://www.dsvssdcsdcsdcsdcsdc.dfsfsdf/dsfsdfs');
@@ -26,6 +27,7 @@ export class SearchComponent implements OnInit {
 
     search(event: Event){
         event.preventDefault();
+        this.searched = true;
         console.log('Search!', this.bike_search);
         // this.all_bikes = this.all_bikes.filter(bike => bike.title.toLowerCase().includes(this.searchTerm.toLowerCase()) )
         this.all_bikes = this.all_bikes.filter(
@@ -55,6 +57,8 @@ export class SearchComponent implements OnInit {
     }
 
     reset(){
+        event.preventDefault();
+        this.searched = false;
         this.bike_search = new Bike();
         this.getBikes();
     }

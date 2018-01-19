@@ -14,15 +14,16 @@
             <input type="number" name='searchTerm' [(ngModel)]='bike_search.price'>
         </div>
         <div class='submit_wrap'>
-            <input type="submit" >
-            <button (click)='reset()'>New Search</button>
+            <button (click)='reset()'>Reset Search</button>
+            <input type="submit" >            
         </div>
     </form>
 </div>
 
 <div *ngIf='all_bikes' class='search_results'>
 
-    <h2 class='center_80'>Search Results - {{ all_bikes.length }}</h2>
+    <h2 *ngIf='searched' class='center_80'>Search Results - {{ all_bikes.length }}</h2>
+    <h2 *ngIf='!searched' class='center_80'>All Bikes - {{ all_bikes.length }}</h2>
     <div *ngFor='let bike of all_bikes' class='bike center_80'>
         <div class='center_95'>
             <div class='bike_pic'>
