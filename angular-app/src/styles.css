@@ -62,14 +62,18 @@ body, app-root, router-outlet  {
 
 @font-face {
   font-family: 'HelveticaNeueLTStd-Lt';
-  src: url('./assets/fonts/HelveticaNeueLTStd-Lt.otf');
-  src: local('./assets/fonts/HelveticaNeueLTStd-Lt.otf');
+  src:
+      local('Helvetica Neue LT Std'),
+      local('HelveticaNeueLTStd-Lt.otf'),
+      url('./assets/fonts/HelveticaNeueLTStd-Lt.otf');
 }
 
 @font-face {
   font-family: 'HelveticaNeueLTStd-Bd';
-  src: url('./assets/fonts/HelveticaNeueLTStd-Bd.otf');
-  src: local('./assets/fonts/HelveticaNeueLTStd-Bd.otf');
+  src:
+      local('Helvetica Neue LT Std'),
+      local('HelveticaNeueLTStd-Bd.otf'),
+      url('./assets/fonts/HelveticaNeueLTStd-Bd.otf');
 }
 
 /* -- FONTS -- */
